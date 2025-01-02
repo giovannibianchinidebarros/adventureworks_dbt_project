@@ -1,7 +1,7 @@
 WITH base AS (
   SELECT
     JSON_QUERY(data, '$') AS json_data
-  FROM `adventureworks-project.adventureworks_dataset.humanresources_department`
+    from {{ source('humanresources','humanresources_department') }}
 )
 SELECT
   JSON_VALUE(json_data, '$.departmentid') AS department_id,
