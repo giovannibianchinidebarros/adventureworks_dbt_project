@@ -1,0 +1,34 @@
+version: 2
+
+models:
+  - name: stg_humanresources__employee_pay_history
+    description: "Staging table para o histórico de pagamento dos funcionários."
+    columns:
+
+      - name: business_entity_id
+        description: "int. Identificador único do funcionário"
+        tests:
+          - not_null
+
+      - name: rate_change_date
+        description: "datetime. Data em que a alteração no pagamento entra em vigor."
+        tests:
+          - not_null
+
+      - name: rate
+        description: "float. Salário por hora."
+        tests:
+          - not_null
+
+      - name: pay_frequency
+        description: "int. 1 = Salário recebido mensalmente, 2 = Salário recebido quinzenalmente"
+        tests:
+          - not_null
+          - accepted_values:
+              values: [1, 2]  # 1 = Mensal, 2 = Quinzenal
+              quote: false
+
+      - name: modified_date
+        description: "datetime. Data da última modificação do registro"
+        tests:
+          - not_null

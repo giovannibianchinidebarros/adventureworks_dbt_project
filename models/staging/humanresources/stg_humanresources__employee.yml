@@ -1,0 +1,55 @@
+version: 2
+
+models:
+
+  - name: stg_humanresources__employee
+    description: "Tabela de funcionários extraída do JSON em em src_humanresources"
+    columns:
+
+      - name: business_entity_id
+        description: "int. Chave primaria do funcionário"
+        tests:
+          - unique
+          - not_null
+        
+      - name: login_id
+        description: "str. Network login."
+        tests:
+          - unique
+          - not_null
+
+      - name: job_title
+        description: "str. Cargo do trabalho, como Comprador ou Representante de Vendas."
+
+      - name: national_id_number
+        description: "str. Número de identificação nacional exclusivo."
+        tests:
+          - unique
+          - not_null
+
+      - name: birth_date
+        description: "date. Data de nascimento do funcionário."
+        tests:
+          - not_null
+      
+      - name: marital_status
+        description: "str. M = Married, S = Single"
+        tests:
+          - accepted_values:
+              values: ["M", "S"]
+      
+      - name: gender
+        description: "str. M = Male, F = Female"
+        tests:
+          - accepted_values:
+              values: ["M", "F"]
+
+      - name: hired_date
+        description: "date. Data de contratação"
+        tests:
+          - not_null
+
+      - name: modified_date
+        description: "date. Data da última modificação"
+        tests:
+          - not_null
