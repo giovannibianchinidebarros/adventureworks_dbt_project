@@ -8,11 +8,11 @@ models:
         tests:
           - unique
           - not_null
-      - name: name
+      - name: department_name
         tests:
           - unique
           - not_null
-      - name: group_name
+      - name: department_group_name
         tests:
           - accepted_values:
               values:
@@ -22,7 +22,7 @@ models:
                 - "Quality Assurance"
                 - "Research and Development"
                 - "Sales and Marketing"
-      - name: modified_date
+      - name: department_modified_date
         description: "Data de modificação convertida para datetime"
         tests:
           - not_null
