@@ -1,0 +1,20 @@
+version: 2
+
+sources:
+  - name: person
+    database: adventureworks-project
+    schema: adventureworks_dataset
+    tables: 
+      - name: person_address
+      - name: person_addresstype
+      - name: person_businessentity
+      - name: person_businessentityaddress
+      - name: person_businessentitycontact
+      - name: person_contacttype
+      - name: person_countryregion
+      - name: person_emailaddress
+      - name: person_password
+      - name: person_person
+      - name: person_personphone
+      - name: person_phonenumbertype
+      - name: person_stateprovince

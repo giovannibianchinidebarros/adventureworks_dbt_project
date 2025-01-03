@@ -1,0 +1,32 @@
+version: 2
+
+sources:
+  - name: production
+    database: adventureworks-project
+    schema: adventureworks_dataset
+    tables: 
+      - name: production_billofmaterials
+      - name: production_culture
+      - name: production_document
+      - name: production_illustration
+      - name: production_location
+      - name: production_product
+      - name: production_productcategory
+      - name: production_productcosthistory
+      - name: production_productdescription
+      - name: production_productdocument
+      - name: production_productinventory
+      - name: production_productlistpricehistory
+      - name: production_productmodel
+      - name: production_productmodelillustration
+      - name: production_productmodelproductdescriptionculture
+      - name: production_productphoto
+      - name: production_productproductphoto
+      - name: production_productreview
+      - name: production_productsubcategory
+      - name: production_scrapreason
+      - name: production_transactionhistory
+      - name: production_transactionhistoryarchive
+      - name: production_unitmeasure
+      - name: production_workorder
+      - name: production_workorderrouting

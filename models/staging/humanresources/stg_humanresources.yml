@@ -3,8 +3,10 @@ version: 2
 models:
 
   - name: stg_humanresources__department
+    description: "Tabela de departamentos extraída de JSON"
     columns:
       - name: department_id
+        description: Primary key for Department records.
         tests:
           - unique
           - not_null
