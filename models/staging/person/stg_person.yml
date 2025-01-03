@@ -1,0 +1,128 @@
+version: 2
+
+models:
+
+  - name: stg_person__address
+    description: "Tabela de endereços"
+    columns:
+      - name: address_id
+        description: "ID do endereço"
+        tests:
+          - not_null
+          - unique
+      - name: address_line1
+        description: "Primeira linha do endereço"
+        tests:
+          - not_null
+      - name: address_line2
+        description: "Segunda linha do endereço"
+      - name: city
+        description: "Cidade"
+        tests:
+          - not_null
+      - name: state_province_id
+        description: "ID do estado ou província"
+        tests:
+          - not_null
+      - name: postal_code
+        description: "Código postal"
+      - name: spatial_location
+        description: "Localização espacial"
+      - name: row_guid
+        description: "GUID único do registro"
+      - name: modified_date
+        description: "Data da última modificação"
+        tests:
+          - not_null
+
+  - name: stg_person__address_type
+    description: "Tabela de tipos de endereço"
+    columns:
+      - name: address_type_id
+        description: "ID do tipo de endereço"
+        tests:
+          - not_null
+          - unique
+      - name: address_type_name
+        description: "Nome do tipo de endereço"
+        tests:
+          - not_null
+      - name: row_guid
+        description: "GUID único do registro"
+        tests:
+          - not_null
+      - name: modified_date
+        description: "Data da última modificação"
+        tests:
+          - not_null
+
+  - name: stg_person__business_entity
+    description: "Tabela de entidades de negócios"
+    columns:
+      - name: business_entity_id
+        description: "Primary key for all customers, vendors, and employees."
+        tests:
+          - not_null
+          - unique
+      - name: row_guid
+        description: "GUID único do registro"
+        tests:
+          - not_null
+      - name: modified_date
+        description: "Data da última modificação"
+        tests:
+          - not_null
+
+  - name: stg_person__business_entity_address
+    description: "Tabela de endereços"
+    columns:
+      - name: business_entity_id
+        description: "ID da entidade de negócios"
+        tests:
+          - not_null
+          - unique
+      - name: address_id
+        description: "ID do endereço"
+        tests:
+          - not_null
+      - name: address_type_id
+        description: "ID do tipo de endereço"
+        tests:
+          - not_null
+      - name: row_guid
+        description: "GUID único do registro"
+      - name: modified_date
+        description: "Data da última modificação"
+        tests:
+          - not_null
+
+  - name: stg_person__business_entity_contact
+    description: "Tabela de contatos associados às pessoas"
+    columns:
+      - name: business_entity_id
+        description: "ID da entidade de negócios"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('business_entities')
+              field: business_entity_id
+      - name: person_id
+        description: "ID da pessoa"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('persons')
+              field: person_id
+      - name: contact_type_id
+        description: "ID do tipo de contato"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('contact_types')
+              field: contact_type_id
+      - name: row_guid
+        description: "GUID único do registro"
+      - name: modified_date
+        description: "Data da última modificação"
+        tests:
+          - not_null

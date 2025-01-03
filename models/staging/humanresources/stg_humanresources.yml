@@ -54,7 +54,7 @@ models:
         tests:
           - not_null
             
-  - name: stg_humanresources__employeedepartmenthistory
+  - name: stg_humanresources__employee_department_history
     description: "Histórico de departamentos dos funcionários"
     columns:
       - name: business_entity_id
