@@ -1,0 +1,22 @@
+version: 2
+
+models:
+  - name: stg_person__phone_number_type
+    description: "Staging table para tipos de números de telefone."
+    columns:
+      
+      - name: phone_number_type_id
+        description: "Identificador único do tipo de número de telefone."
+        tests:
+          - not_null
+          - unique
+
+      - name: phone_number_type_name
+        description: "Nome do tipo de número de telefone (ex: Celular, Residencial, Comercial)."
+        tests:
+          - not_null
+
+      - name: modified_date
+        description: "Data da última modificação do registro."
+        tests:
+          - not_null

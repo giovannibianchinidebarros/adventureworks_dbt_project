@@ -1,0 +1,31 @@
+version: 2
+
+models:
+  - name: stg_person__email_address
+    description: "Staging para tabela de emails."
+    columns:
+      - name: business_entity_id
+        description: "int. Chave primária. Pessoa associada a este endereço de e-mail."
+        tests:
+          - not_null
+          - unique
+
+      - name: email_address_id
+        description: "int. Chave primária. ID deste endereço de e-mail."
+        tests:
+          - not_null
+          - unique
+
+      - name: email_address
+        description: "Endereço de e-mail da pessoa."
+
+      - name: row_guid
+        description: "Identificador unico da linha."
+        tests:
+          - not_null
+          - unique
+
+      - name: modified_date
+        description: "Timestamp da ultima mdificação."
+        tests:
+          - not_null

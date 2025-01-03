@@ -1,0 +1,38 @@
+version: 2
+
+models:
+
+  - name: stg_person__business_entity_contact
+    description: "Tabela de contatos associados às pessoas"
+    columns:
+
+      - name: business_entity_id
+        description: "ID"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('business_entities')
+              field: business_entity_id
+
+      - name: person_id
+        description: "ID da pessoa"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('persons')
+              field: person_id
+
+      - name: contact_type_id
+        description: "ID do tipo de contato"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('contact_types')
+              field: contact_type_id
+
+      - name: row_guid
+        description: "GUID único do registro"
+      - name: modified_date
+        description: "Data da última modificação"
+        tests:
+          - not_null

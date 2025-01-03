@@ -1,0 +1,29 @@
+version: 2
+
+models:
+  - name: stg_person__phone_number
+
+    description: "Staging table para números de telefone."
+    columns:
+      - name: business_entity_id
+        description: "int. ID da pessoa."
+        tests:
+          - not_null
+
+      - name: phone_number
+        description: "str. Número de telefone."
+        tests:
+          - not_null
+
+      - name: phone_number_type_id
+        description: "int. ID do tipo de telefone."
+        tests:
+          - not_null
+          - accepted_values:
+              values: [1, 2, 3]
+              quote: false
+
+      - name: modified_date
+        description: "Data da última modificação do registro."
+        tests:
+          - not_null

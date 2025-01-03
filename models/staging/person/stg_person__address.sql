@@ -6,8 +6,15 @@ WITH base AS (
 
 SELECT
     SAFE_CAST(JSON_VALUE(json_data, '$.addressid') AS INT64) AS address_id,
-    JSON_VALUE(json_data, '$.addressline1') AS address_line1,
-    JSON_VALUE(json_data, '$.addressline2') AS address_line2,
+
+    -- JSON_VALUE(json_data, '$.addressline1') AS address_line1,
+    -- JSON_VALUE(json_data, '$.addressline2') AS address_line2,
+    CONCAT(
+        COALESCE(JSON_VALUE(json_data, '$.addressline1'), ''),  -- Substitui NULL por uma string vazia
+        ' ',  -- Um espaço entre os dois endereços
+        COALESCE(JSON_VALUE(json_data, '$.addressline2'), '')  -- Substitui NULL por uma string vazia
+    ) AS full_address,  -- A coluna concatenada
+
     JSON_VALUE(json_data, '$.city') AS city,
     SAFE_CAST(JSON_VALUE(json_data, '$.stateprovinceid') AS INT64) AS state_province_id,
     JSON_VALUE(json_data, '$.postalcode') AS postal_code,

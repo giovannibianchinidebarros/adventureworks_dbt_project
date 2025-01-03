@@ -1,0 +1,51 @@
+version: 2
+
+models:
+  - name: stg_person__state_province
+    description: "Staging table para informações de estados e províncias."
+    columns:
+
+      - name: state_province_id
+        description: "Identificador único do estado ou província."
+        tests:
+          - not_null
+          - unique
+
+      - name: state_province_code
+        description: "str. Código de estado ou província padrão ISO."
+        tests:
+          - not_null
+
+      - name: country_region_code
+        description: "str. Código de país ou região padrão ISO."
+        tests:
+          - not_null
+
+      - name: is_only_state_province_flag
+        description: "0 = StateProvinceCode exists. 1 = StateProvinceCode unavailable, using CountryRegionCode."
+        tests:
+          - not_null
+          - accepted_values:
+              values: [true, false]
+              quote: false
+
+      - name: state_province_name
+        description: "Nome do estado ou província."
+        tests:
+          - not_null
+
+      - name: territory_id
+        description: "ID do território em que o estado ou província está localizado."
+        tests:
+          - not_null
+
+      - name: row_guid
+        description: "Identificador global único (GUID) para o registro."
+        tests:
+          - not_null
+          - unique
+
+      - name: modified_date
+        description: "Data da última modificação do registro."
+        tests:
+          - not_null

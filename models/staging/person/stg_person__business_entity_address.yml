@@ -1,0 +1,31 @@
+version: 2
+
+models:
+  - name: stg_person__business_entity_address
+    description: "Tabela de endereços"
+    columns:
+      - name: business_entity_id
+        description: "ID do cliente/funcionario/pessoa"
+        tests:
+          - not_null
+
+      - name: address_id
+        description: "ID do endereço"
+        tests:
+          - not_null
+
+      - name: address_type_id
+        description: "ID do tipo de endereço"
+        tests:
+          - not_null
+
+      - name: row_guid
+        description: "GUID único do registro"
+        tests:
+          - not_null
+          - unique
+
+      - name: modified_date
+        description: "Data da última modificação"
+        tests:
+          - not_null
