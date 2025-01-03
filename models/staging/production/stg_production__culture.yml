@@ -1,0 +1,22 @@
+version: 2
+
+models:
+  - name: stg_production__culture
+    description: "Staging table para as culturas de produção."
+    columns:
+      
+      - name: culture_id
+        description: "Identificador único da cultura de produção."
+        tests:
+          - not_null
+          - unique
+
+      - name: name
+        description: "Nome da cultura de produção."
+        tests:
+          - not_null
+
+      - name: modified_date
+        description: "Data da última modificação do registro."
+        tests:
+          - not_null
