@@ -1,0 +1,28 @@
+version: 2
+
+models:
+  - name: stg_production__product_photo
+    description: "Staging table para as fotos do produto, incluindo fotos em miniatura e grandes."
+    columns:
+
+      - name: product_photo_id
+        description: "int. Identificador único da foto do produto."
+        tests:
+          - not_null
+
+      - name: thumbnail_photo
+        description: "string. Imagem da miniatura do produto em formato binário."
+
+      - name: thumbnail_photo_filename
+        description: "string. Nome do arquivo da miniatura da foto do produto."
+
+      - name: large_photo
+        description: "string. Imagem da foto grande do produto em formato binário."
+
+      - name: large_photo_filename
+        description: "string. Nome do arquivo da foto grande do produto."
+
+      - name: modified_date
+        description: "datetime. Data da última modificação da foto do produto."
+        tests:
+          - not_null

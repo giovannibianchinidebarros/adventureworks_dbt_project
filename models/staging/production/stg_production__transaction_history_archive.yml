@@ -1,0 +1,53 @@
+version: 2
+
+models:
+  - name: stg_production__transaction_history_archive
+    description: "Staging table para o archive do histórico de transações dos anos anteriores."
+    columns:
+      - name: transaction_id
+        description: "int. Identificador único da transação."
+        tests:
+          - not_null
+          - unique
+
+      - name: product_id
+        description: "int. Identificador único do produto."
+        tests:
+          - not_null
+
+      - name: reference_order_id
+        description: "int. Purchase order, sales order, ou work order identification number."
+        tests:
+          - not_null
+
+      - name: reference_order_line_id
+        description: "int. Identificador da linha do pedido de referência relacionada à transação."
+        tests:
+          - not_null
+
+      - name: transaction_date
+        description: "datetime. Data e hora da transação."
+        tests:
+          - not_null
+
+      - name: transaction_type
+        description: "string. W = WorkOrder, S = SalesOrder, P = PurchaseOrder"
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['W', 'S', 'P']
+
+      - name: quantity
+        description: "int. Quantidade de produtos envolvidos na transação."
+        tests:
+          - not_null
+
+      - name: actual_cost
+        description: "float. Custo real do produto envolvido na transação."
+        tests:
+          - not_null
+
+      - name: modified_date
+        description: "datetime. Data da última modificação da transação."
+        tests:
+          - not_null

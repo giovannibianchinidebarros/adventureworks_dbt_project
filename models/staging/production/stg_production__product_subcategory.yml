@@ -1,0 +1,33 @@
+version: 2
+
+models:
+  - name: stg_production__product_subcategory
+    description: "Staging table para subcategorias de produtos, com detalhes sobre a categoria e a modificação da subcategoria."
+    columns:
+      
+      - name: product_subcategory_id
+        description: "int. Identificador único da subcategoria do produto."
+        tests:
+          - not_null
+          - unique
+
+      - name: product_category_id
+        description: "int. Identificador único da categoria do produto."
+        tests:
+          - not_null
+
+      - name: name
+        description: "string. Nome da subcategoria do produto."
+        tests:
+          - not_null
+
+      - name: row_guid
+        description: "string. Identificador único global (GUID) para a subcategoria."
+        tests:
+          - not_null
+          - unique
+
+      - name: modified_date
+        description: "datetime. Data da última modificação da subcategoria do produto."
+        tests:
+          - not_null

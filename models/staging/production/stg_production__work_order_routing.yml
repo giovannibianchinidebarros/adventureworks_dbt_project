@@ -1,0 +1,57 @@
+version: 2
+
+models:
+  - name: stg_production__work_order_routing
+    description: "Staging table para detalhes das ordens de produção."
+    columns:
+      - name: work_order_id
+        description: "int. Identificador único da ordem de produção."
+        tests:
+          - not_null
+
+      - name: product_id
+        description: "int. Identificador do produto relacionado à operação da ordem de produção."
+        tests:
+          - not_null
+
+      - name: operation_sequence
+        description: "int. Sequência da operação dentro da ordem de produção."
+        tests:
+          - not_null
+
+      - name: location_id
+        description: "int. Identificador do local de operação dentro da fábrica."
+        tests:
+          - not_null
+
+      - name: scheduled_start_date
+        description: "datetime. Data e hora agendada para o início da operação."
+        tests:
+          - not_null
+
+      - name: scheduled_end_date
+        description: "datetime. Data e hora agendada para o término da operação."
+        tests:
+          - not_null
+
+      - name: actual_start_date
+        description: "datetime. Data e hora real do início da operação."
+
+      - name: actual_end_date
+        description: "datetime. Data e hora real do término da operação."
+
+      - name: actual_resource_hrs
+        description: "float. Número de horas de recursos reais utilizados na operação."
+
+      - name: planned_cost
+        description: "float. Custo estimado da operação."
+        tests:
+          - not_null
+
+      - name: actual_cost
+        description: "float. Custo real da operação."
+
+      - name: modified_date
+        description: "datetime. Data da última modificação do registro."
+        tests:
+          - not_null
