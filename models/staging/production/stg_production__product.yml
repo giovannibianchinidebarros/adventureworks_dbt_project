@@ -1,0 +1,111 @@
+version: 2
+
+models:
+  - name: stg_production__product
+    description: "Staging table para dados de produtos na produção."
+    columns:
+      - name: product_id
+        description: "chave primaria do produto."
+        tests:
+          - not_null
+          - unique
+
+      - name: product_name
+        description: "Nome do produto."
+        tests:
+          - not_null
+
+      - name: product_number
+        description: "Número identificador do produto."
+        tests:
+          - not_null
+          - unique
+
+      - name: make_flag
+        description: "0 = Product is purchased, 1 = Product is manufactured in-house."
+        tests:
+          - not_null
+          - accepted_values:
+              values: [true, false]
+              quote: false
+
+      - name: finished_goods_flag
+        description: "0 = Product is not a salable item. 1 = Product is salable."
+        tests:
+          - not_null
+          - accepted_values:
+              values: [true, false]
+              quote: false
+
+      - name: safety_stock_level
+        description: "Quantidade mínima de estoque."
+        tests:
+          - not_null
+
+      - name: reorder_point
+        description: "Nível de estoque que aciona uma ordem de compra ou ordem de serviço."
+        tests:
+          - not_null
+
+      - name: standard_cost
+        description: "Custo padrão do produto."
+        tests:
+          - not_null
+
+      - name: list_price
+        description: "Preço de venda do produto."
+        tests:
+          - not_null
+
+      - name: size
+
+      - name: size_unit_measure_code
+
+      - name: weight_unit_measure_code
+
+      - name: weight
+        description: "Peso do produto."
+
+      - name: days_to_manufacture
+        description: "Tempo necessário para fabricação em dias."
+        tests:
+          - not_null
+
+      - name: product_line
+        description: "R = Road, M = Mountain, T = Touring, S = Standard"
+        # tests:
+        #   - accepted_values:
+        #       values: ['R', 'M', 'T', 'S']
+
+      - name: class
+        description: "H = High, M = Medium, L = Low"
+        # tests:
+        #   - accepted_values:
+        #       values: ['H', 'M', 'L']
+
+      - name: style
+        description: "W = Womens, M = Mens, U = Universal"
+        # tests:
+        #   - accepted_values:
+        #       values: ['W', 'M', 'U']
+
+      - name: product_subcategory_id
+
+      - name: product_model_id
+
+      - name: sell_start_date
+        description: "Data de início das vendas do produto."
+        tests:
+          - not_null
+
+      - name: sell_end_date
+
+      - name: discontinued_date
+
+      - name: row_guid
+        description: "identificador unico da linha"
+
+      - name: modified_date
+        description: "Data da última modificação."
+        tests:
+          - not_null

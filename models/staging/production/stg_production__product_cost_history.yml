@@ -1,0 +1,28 @@
+version: 2
+
+models:
+  - name: stg_production__product_cost_history
+    description: "Staging table para histórico de custos de produtos."
+    columns:
+      - name: product_id
+        description: "Identificador único do produto."
+        tests:
+          - not_null
+
+      - name: start_date
+        description: "Data de início da vigência do custo."
+        tests:
+          - not_null
+
+      - name: end_date
+        description: "Data de fim da vigência do custo."
+      
+      - name: standard_cost
+        description: "Custo padrão do produto durante o período."
+        tests:
+          - not_null
+
+      - name: modified_date
+        description: "Data da última modificação do registro."
+        tests:
+          - not_null

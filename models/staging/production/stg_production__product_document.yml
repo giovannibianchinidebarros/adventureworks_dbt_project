@@ -1,0 +1,20 @@
+version: 2
+
+models:
+  - name: stg_production__product_document
+    description: "Staging table para documentos de produtos."
+    columns:
+      - name: product_id
+        description: "int. Identificador único do produto."
+        tests:
+          - not_null
+
+      - name: modified_date
+        description: "datetime. Data da última modificação do documento."
+        tests:
+          - not_null
+
+      - name: document_node
+        description: "string. Identificador único do nó do documento."
+        tests:
+          - not_null

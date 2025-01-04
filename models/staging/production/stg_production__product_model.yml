@@ -1,0 +1,31 @@
+version: 2
+
+models:
+  - name: stg_production__product_model
+    description: "Staging table para os modelos de produtos."
+    columns:
+      - name: product_model_id
+        description: "int. Identificador único do modelo do produto."
+        tests:
+          - not_null
+
+      - name: product_model_name
+        description: "string. Nome do modelo do produto."
+        tests:
+          - not_null
+
+      - name: catalog_description
+        description: "string. Descrição do catálogo do modelo do produto, em formato xml."
+
+      - name: instructions
+        description: "string. Instruções de fabricação em formato xml."
+
+      - name: row_guid
+        description: "string. Identificador único (GUID) da linha."
+        tests:
+          - not_null
+
+      - name: modified_date
+        description: "datetime. Data da última modificação."
+        tests:
+          - not_null

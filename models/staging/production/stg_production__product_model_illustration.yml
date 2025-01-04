@@ -1,0 +1,21 @@
+version: 2
+
+models:
+  - name: stg_production__product_model_illustration
+    description: "Staging table para as ilustrações associadas aos modelos de produtos."
+    columns:
+
+      - name: product_model_id
+        description: "int. Identificador único do modelo do produto."
+        tests:
+          - not_null
+
+      - name: illustration_id
+        description: "int. Identificador único da ilustração do modelo do produto."
+        tests:
+          - not_null
+
+      - name: modified_date
+        description: "datetime. Data da última modificação da ilustração do modelo do produto."
+        tests:
+          - not_null

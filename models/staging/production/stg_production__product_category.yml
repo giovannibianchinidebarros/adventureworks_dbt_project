@@ -1,0 +1,28 @@
+version: 2
+
+models:
+  - name: stg_production__product_category
+    description: "Staging table para dados de categorias de produtos."
+    columns:
+      
+      - name: product_category_id
+        description: "Identificador único da categoria do produto."
+        tests:
+          - not_null
+          - unique
+
+      - name: category_name
+        description: "Nome da categoria do produto."
+        tests:
+          - not_null
+
+      - name: row_guid
+        description: "Identificador global único (GUID) para a categoria do produto."
+        tests:
+          - not_null
+          - unique
+
+      - name: modified_date
+        description: "Data da última modificação da categoria do produto."
+        tests:
+          - not_null

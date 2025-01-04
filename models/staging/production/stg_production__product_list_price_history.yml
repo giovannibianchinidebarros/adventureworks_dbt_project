@@ -1,0 +1,29 @@
+version: 2
+
+models:
+  - name: stg_production__product_list_price_history
+    description: "Staging table para os preços dos produtos."
+    columns:
+
+      - name: product_id
+        description: "int. Identificador único do produto."
+        tests:
+          - not_null
+
+      - name: start_date
+        description: "datetime. Data de início da validade do preço."
+        tests:
+          - not_null
+
+      - name: end_date
+        description: "datetime. Data de fim da validade do preço. Pode ser nulo."
+
+      - name: list_price
+        description: "float. Preço do produto."
+        tests:
+          - not_null
+
+      - name: modified_date
+        description: "datetime. Data da última modificação do preço."
+        tests:
+          - not_null
