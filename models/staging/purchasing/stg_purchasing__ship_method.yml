@@ -1,0 +1,37 @@
+version: 2
+
+models:
+  - name: stg_purchasing__ship_method
+    description: "Staging para Tabela de consulta de companias de transporte."
+    columns:
+      - name: ship_method_id
+        description: "int. Identificador único do método de envio."
+        tests:
+          - not_null
+          - unique
+
+      - name: name
+        description: "string. Nome da empresa de transporte."
+        tests:
+          - not_null
+
+      - name: ship_base
+        description: "float. Taxa mínima de envio."
+        tests:
+          - not_null
+
+      - name: ship_rate
+        description: "float. Taxa de envio por libra(pound)."
+        tests:
+          - not_null
+
+      - name: row_guid
+        description: "string. GUID único da linha do método de envio."
+        tests:
+          - not_null
+          - unique
+
+      - name: modified_date
+        description: "datetime. Data da última modificação do registro."
+        tests:
+          - not_null
