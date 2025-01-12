@@ -1,0 +1,20 @@
+version: 2
+
+models:
+  - name: stg_sales__sales_order_header_sales_reason
+    description: "Staging table para relacionar ordens de venda aos motivos de venda."
+    columns:
+      - name: sales_order_id
+        description: "int. Identificador único da ordem de venda."
+        tests:
+          - not_null
+
+      - name: sales_reason_id
+        description: "int. Identificador único do motivo da venda."
+        tests:
+          - not_null
+
+      - name: modified_date
+        description: "datetime. Data da última modificação do registro."
+        tests:
+          - not_null

@@ -1,0 +1,45 @@
+version: 2
+
+models:
+  - name: stg_sales__credit_card
+    description: "Staging table para informações de cartões de crédito dos clientes."
+    columns:
+      - name: credit_card_id
+        description: "int. Identificador único do cartão de crédito."
+        tests:
+          - not_null
+          - unique
+
+      - name: card_type
+        description: "string. Tipo do cartão (No brasil seria como Visa, Mastercard)."
+        tests:
+          - not_null
+          - accepted_values:
+              values:
+                - "Vista"
+                - "SuperiorCard"
+                - "Distinguish"
+                - "ColonialVoice"
+
+      - name: card_number
+        description: "string. Número do cartão de crédito."
+        tests:
+          - not_null
+
+      - name: exp_month
+        description: "int. Mês de expiração do cartão."
+        tests:
+          - not_null
+          - accepted_values:
+              values: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+              quote: false
+
+      - name: exp_year
+        description: "int. Ano de expiração do cartão."
+        tests:
+          - not_null
+
+      - name: modified_date
+        description: "datetime. Data da última modificação do registro."
+        tests:
+          - not_null

@@ -1,0 +1,112 @@
+version: 2
+
+models:
+  - name: stg_sales__sales_order_header
+    description: "Staging table para informações gerais sobre pedidos de vendas."
+    columns:
+      - name: sales_order_id
+        description: "int. Identificador único da ordem de venda."
+        tests:
+          - not_null
+          - unique
+
+      - name: revision_number
+        description: "int. Número incremental para rastrear alterações no pedido de venda ao longo do tempo."
+        tests:
+          - not_null
+
+      - name: order_date
+        description: "date. Data em que a ordem foi criada."
+        tests:
+          - not_null
+
+      - name: due_date
+        description: "date. Data de vencimento da ordem de venda."
+        tests:
+          - not_null
+
+      - name: ship_date
+        description: "date. Data de envio da ordem de venda."
+
+      - name: status
+        description: "int. Status da ordem de venda. 1 = In process; 2 = Approved; 3 = Backordered; 4 = Rejected; 5 = Shipped; 6 = Cancelled"
+        tests:
+          - not_null
+          - accepted_values:
+              values: [1, 2, 3, 4, 5, 6]
+              quote: false
+
+      - name: online_order_flag
+        description: "boolean. 0 = Order placed by sales person. 1 = Order placed online by customer."
+        tests:
+          - not_null
+          - accepted_values:
+              values: [true, false]
+              quote: false
+
+      - name: purchase_order_number
+        description: "string. Número do pedido de compra."
+
+      - name: account_number
+        description: "string. Número da conta associada à ordem de venda."
+
+      - name: customer_id
+        description: "int. Identificador único do cliente."
+        tests:
+          - not_null
+
+      - name: salesperson_id
+        description: "int. Identificador único do vendedor responsável."
+
+      - name: territory_id
+        description: "int. Identificador único do território de venda."
+
+      - name: bill_to_address_id
+        description: "int. Identificador do endereço de faturamento. Address.AddressID."
+
+      - name: ship_to_address_id
+        description: "int. Identificador do endereço de envio. Address.AddressID."
+
+      - name: ship_method_id
+        description: "int. Identificador do método de envio."
+        tests:
+          - not_null
+
+      - name: credit_card_id
+        description: "int. Identificador do cartão de crédito usado para pagamento."
+
+      - name: credit_card_approval_code
+        description: "string. Código de aprovação do cartão de crédito."
+
+      - name: currency_rate_id
+        description: "int. Identificador da taxa de câmbio usada."
+
+      - name: subtotal
+        description: "float. Valor total sem taxas e frete."
+        tests:
+          - not_null
+
+      - name: tax_amount
+        description: "float. Valor total das taxas aplicadas."
+
+      - name: freight
+        description: "float. Valor total do frete."
+
+      - name: total_due
+        description: "float. Valor total devido."
+        tests:
+          - not_null
+
+      - name: comment
+        description: "string. Comentário sobre a ordem de venda."
+
+      - name: row_guid
+        description: "string. Identificador global único do registro."
+        tests:
+          - not_null
+          - unique
+
+      - name: modified_date
+        description: "datetime. Data da última modificação do registro."
+        tests:
+          - not_null

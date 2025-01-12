@@ -1,0 +1,33 @@
+version: 2
+
+models:
+  - name: stg_sales__customer
+    description: "Staging table para informações de clientes."
+    columns:
+      - name: customer_id
+        description: "int. Identificador único do cliente."
+        tests:
+          - not_null
+          - unique
+
+      - name: person_id
+        description: "int. Identificador da pessoa associada ao cliente (pode ser nulo se o cliente for uma loja)."
+
+      - name: store_id
+        description: "int. Identificador da loja associada ao cliente (pode ser nulo se o cliente for uma pessoa)."
+
+      - name: territory_id
+        description: "int. Identificador da região de vendas associada ao cliente."
+        tests:
+          - not_null
+
+      - name: row_guid
+        description: "string. GUID único do registro."
+        tests:
+          - not_null
+          - unique
+
+      - name: modified_date
+        description: "datetime. Data da última modificação do registro."
+        tests:
+          - not_null

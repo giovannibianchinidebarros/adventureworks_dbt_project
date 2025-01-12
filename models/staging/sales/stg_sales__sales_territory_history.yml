@@ -1,0 +1,33 @@
+version: 2
+
+models:
+  - name: stg_sales__sales_territory_history
+    description: "Staging table para o quando o representante de vendas é transferido para outros territórios de vendas."
+    columns:
+      - name: business_entity_id
+        description: "int. Identificador único da entidade de negócios."
+        tests:
+          - not_null
+
+      - name: territory_id
+        description: "int. Identificador único do território."
+        tests:
+          - not_null
+
+      - name: start_date
+        description: "datetime. Data em que o representante comercial começou a trabalhar no território."
+        tests:
+          - not_null
+
+      - name: end_date
+        description: "datetime. Data em que o representante de vendas deixou o trabalho no território. (Pode ser nulo)"
+
+      - name: row_guid
+        description: "string. GUID único para o registro."
+        tests:
+          - not_null
+
+      - name: modified_date
+        description: "datetime. Data da última modificação."
+        tests:
+          - not_null

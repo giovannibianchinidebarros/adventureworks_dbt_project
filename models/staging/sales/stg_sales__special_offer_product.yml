@@ -1,0 +1,25 @@
+version: 2
+
+models:
+  - name: stg_sales__special_offer_product
+    description: "Staging table para os produtos associados às ofertas especiais."
+    columns:
+      - name: special_offer_id
+        description: "int. Identificador único da oferta especial."
+        tests:
+          - not_null
+
+      - name: product_id
+        description: "int. Identificador único do produto."
+        tests:
+          - not_null
+
+      - name: row_guid
+        description: "string. Identificador único global da oferta especial associada ao produto."
+        tests:
+          - not_null
+
+      - name: modified_date
+        description: "datetime. Data da última modificação do registro."
+        tests:
+          - not_null

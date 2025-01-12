@@ -1,0 +1,47 @@
+version: 2
+
+models:
+  - name: stg_sales__sales_person
+    description: "Staging table para informações sobre vendedores e suas métricas de desempenho."
+    columns:
+      - name: business_entity_id
+        description: "int. Identificador único da entidade do vendedor."
+        tests:
+          - not_null
+
+      - name: territory_id
+        description: "int. Identificador da região territorial atribuída ao vendedor."
+
+      - name: sales_quota
+        description: "float. Meta de vendas atribuída ao vendedor."
+
+      - name: bonus
+        description: "float. Valor do bônus devido, se a cota for atingida."
+        tests:
+          - not_null
+
+      - name: commission_pct
+        description: "float. Percentual de comissão do vendedor."
+        tests:
+          - not_null
+
+      - name: sales_ytd
+        description: "float. Total de vendas realizadas pelo vendedor no ano até a data atual."
+        tests:
+          - not_null
+
+      - name: sales_last_year
+        description: "float. Total de vendas realizadas pelo vendedor no ano anterior."
+        tests:
+          - not_null
+
+      - name: row_guid
+        description: "string. Identificador global único do registro."
+        tests:
+          - not_null
+          - unique
+
+      - name: modified_date
+        description: "datetime. Data da última modificação do registro."
+        tests:
+          - not_null

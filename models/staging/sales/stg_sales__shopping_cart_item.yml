@@ -1,0 +1,36 @@
+version: 2
+
+models:
+  - name: stg_sales__shopping_cart_item
+    description: "Staging table para os itens no carrinho de compras. Contém pedidos de clientes on-line até que o pedido seja enviado ou cancelado."
+    columns:
+      - name: shopping_cart_item_id
+        description: "int. Identificador único do item no carrinho de compras."
+        tests:
+          - not_null
+          - unique
+
+      - name: shopping_cart_id
+        description: "int. Identificador único do carrinho de compras. Foi convertido da char para int durante o staging."
+        tests:
+          - not_null
+
+      - name: quantity
+        description: "int. Quantidade do produto no carrinho."
+        tests:
+          - not_null
+
+      - name: product_id
+        description: "int. ID do produto no carrinho."
+        tests:
+          - not_null
+
+      - name: date_created
+        description: "datetime. Data de criação do item no carrinho."
+        tests:
+          - not_null
+
+      - name: modified_date
+        description: "datetime. Data da última modificação do item no carrinho."
+        tests:
+          - not_null

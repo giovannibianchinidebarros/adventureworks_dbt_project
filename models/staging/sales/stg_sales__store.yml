@@ -1,0 +1,36 @@
+version: 2
+
+models:
+  - name: stg_sales__store
+    description: "Staging table para os Clientes (revendedores) de produtos Adventure Works."
+    columns:
+      - name: business_entity_id
+        description: "int. Identificador único da entidade de negócios (vendedor)."
+        tests:
+          - not_null
+          - unique
+
+      - name: store_name
+        description: "string. Nome da loja."
+        tests:
+          - not_null
+
+      - name: sales_person_id
+        description: "int. Identificador único do vendedor associado à essa loja."
+        tests:
+          - not_null
+
+      - name: demographics
+        description: "string. Informações demográficas do vendedor."
+        tests:
+          - not_null
+
+      - name: row_guid
+        description: "string. Identificador único global do vendedor."
+        tests:
+          - not_null
+
+      - name: modified_date
+        description: "datetime. Data da última modificação do registro."
+        tests:
+          - not_null
