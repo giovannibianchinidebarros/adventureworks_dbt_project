@@ -4,13 +4,16 @@ models:
   - name: stg_person__email_address
     description: "Staging para tabela de emails."
     columns:
-      - name: business_entity_id
-        description: "int. Chave primária. Pessoa associada a este endereço de e-mail."
+      - name: fk_person_id
+        description: "int. Pessoa associada a este endereço de e-mail. relacionado com stg_person__person.pk_person_id"
         tests:
           - not_null
           - unique
+          - relationships:
+              field: pk_person_id
+              to: ref('stg_person__person')
 
-      - name: email_address_id
+      - name: pk_email_address_id
         description: "int. Chave primária. ID deste endereço de e-mail."
         tests:
           - not_null

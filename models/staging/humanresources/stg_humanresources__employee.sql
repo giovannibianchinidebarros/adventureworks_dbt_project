@@ -4,7 +4,7 @@ WITH base AS (
     FROM {{ source('humanresources','humanresources_employee') }}
 )
 SELECT
-    SAFE_CAST(JSON_VALUE(json_data, '$.businessentityid') AS INT64) AS business_entity_id,
+    SAFE_CAST(JSON_VALUE(json_data, '$.businessentityid') AS INT64) AS pk_employee_id,
     JSON_VALUE(json_data, '$.nationalidnumber') AS national_id_number,
     JSON_VALUE(json_data, '$.loginid') AS login_id,
     JSON_VALUE(json_data, '$.jobtitle') AS job_title,

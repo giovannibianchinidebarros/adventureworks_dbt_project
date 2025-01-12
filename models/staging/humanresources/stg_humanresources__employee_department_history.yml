@@ -6,10 +6,13 @@ models:
     description: "Histórico de departamentos de cada funcionário."
     columns:
 
-      - name: business_entity_id
+      - name: fk_employee_id
         description: "int. Identificador do funcionário. Pode aparecer mais de uma vez nessa tabela."
         tests:
           - not_null
+          - relationships:
+              field: pk_employee_id
+              to: ref('stg_humanresources__employee')
 
       - name: department_id
         description: "int. Identificador do departamento."

@@ -4,10 +4,13 @@ models:
   - name: stg_sales__sales_person
     description: "Staging table para informações sobre vendedores e suas métricas de desempenho."
     columns:
-      - name: business_entity_id
-        description: "int. Identificador único da entidade do vendedor."
+      - name: salesperson_id
+        description: "int. Identificador único do vendedor. relacionado a stg_humanresources__employee.pk_employee_id"
         tests:
           - not_null
+          - relationships:
+              field: pk_employee_id
+              to: ref('stg_humanresources__employee')
 
       - name: territory_id
         description: "int. Identificador da região territorial atribuída ao vendedor."

@@ -5,10 +5,13 @@ models:
 
     description: "Staging table para números de telefone."
     columns:
-      - name: business_entity_id
+      - name: fk_person_id
         description: "int. ID da pessoa."
         tests:
           - not_null
+          - relationships:
+              field: pk_person_id
+              to: ref('stg_person__person')
 
       - name: phone_number
         description: "str. Número de telefone."

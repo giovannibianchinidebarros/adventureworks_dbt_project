@@ -4,10 +4,13 @@ models:
   - name: stg_sales__person_credit_card
     description: "Staging table para associar entidades comerciais aos cartões de crédito."
     columns:
-      - name: business_entity_id
+      - name: fk_person_id
         description: "int. Identificador único da entidade comercial associada ao cartão de crédito."
         tests:
           - not_null
+          - relationships:
+              field: pk_person_id
+              to: ref('stg_person__person')
 
       - name: credit_card_id
         description: "int. Identificador único do cartão de crédito."

@@ -6,11 +6,14 @@ models:
     description: "Tabela de funcionários extraída do JSON em em src_humanresources"
     columns:
 
-      - name: business_entity_id
-        description: "int. Chave primaria do funcionário"
+      - name: pk_employee_id
+        description: "int. Chave primaria do funcionário. Relacionada com stg_person__person.pk_person_id"
         tests:
           - unique
           - not_null
+          - relationships:
+              field: pk_person_id
+              to: ref('stg_person__person')
         
       - name: login_id
         description: "str. Network login."

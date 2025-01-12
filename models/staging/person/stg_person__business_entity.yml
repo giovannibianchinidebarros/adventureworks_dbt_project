@@ -6,7 +6,7 @@ models:
     description: "Tabela de entidades de negócios"
     columns:
 
-      - name: business_entity_id
+      - name: pk_business_entity_id
         description: "int. Primary key for all customers, vendors, and employees."
         tests:
           - not_null

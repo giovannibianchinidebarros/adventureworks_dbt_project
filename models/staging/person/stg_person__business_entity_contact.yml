@@ -6,13 +6,13 @@ models:
     description: "Tabela de contatos associados às pessoas"
     columns:
 
-      - name: business_entity_id
-        description: "ID"
+      - name: fk_business_entity_id
+        description: "ID. relacionado com stg_person__business_entity.pk_business_entity_id"
         tests:
           - not_null
           - relationships:
-              to: ref('business_entities')
-              field: business_entity_id
+              field: pk_business_entity_id
+              to: ref('stg_person__business_entity')
 
       - name: person_id
         description: "ID da pessoa"

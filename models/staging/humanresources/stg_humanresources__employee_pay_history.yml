@@ -5,10 +5,13 @@ models:
     description: "Staging table para o histórico de pagamento dos funcionários."
     columns:
 
-      - name: business_entity_id
+      - name: fk_employee_id
         description: "int. Identificador único do funcionário"
         tests:
           - not_null
+          - relationships:
+              field: pk_employee_id
+              to: ref('stg_humanresources__employee')
 
       - name: rate_change_date
         description: "datetime. Data em que a alteração no pagamento entra em vigor."

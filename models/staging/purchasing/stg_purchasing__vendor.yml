@@ -4,11 +4,14 @@ models:
   - name: stg_purchasing__vendor
     description: "Staging table para informações de fornecedores."
     columns:
-      - name: business_entity_id
-        description: "int. Identificador único da entidade comercial."
+      - name: pk_vendor_id
+        description: "int. Chave primária do fornecedor. relacionada com stg_person__business_entity.pk_business_entity_id"
         tests:
           - not_null
           - unique
+          - relationships:
+              field: pk_business_entity_id
+              to: ref('stg_person__business_entity')
 
       - name: account_number
         description: "string. Número da conta/identificação do fornecedor."

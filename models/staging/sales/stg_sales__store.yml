@@ -4,11 +4,14 @@ models:
   - name: stg_sales__store
     description: "Staging table para os Clientes (revendedores) de produtos Adventure Works."
     columns:
-      - name: business_entity_id
-        description: "int. Identificador único da entidade de negócios (vendedor)."
+      - name: pk_store_id
+        description: "int. Chave primaria da loja. relacionada com stg_person__business_entity.pk_business_entity_id"
         tests:
           - not_null
           - unique
+          - relationships:
+              field: pk_business_entity_id
+              to: ref('stg_person__business_entity')
 
       - name: store_name
         description: "string. Nome da loja."

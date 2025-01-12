@@ -4,17 +4,25 @@ models:
   - name: stg_sales__customer
     description: "Staging table para informações de clientes."
     columns:
-      - name: customer_id
+      - name: pk_customer_id
         description: "int. Identificador único do cliente."
         tests:
           - not_null
           - unique
 
-      - name: person_id
+      - name: fk_person_id
         description: "int. Identificador da pessoa associada ao cliente (pode ser nulo se o cliente for uma loja)."
+        tests:
+          - relationships:
+              field: pk_person_id
+              to: ref('stg_person__person')
 
-      - name: store_id
+      - name: fk_store_id
         description: "int. Identificador da loja associada ao cliente (pode ser nulo se o cliente for uma pessoa)."
+        tests:
+          - relationships:
+              field: pk_store_id
+              to: ref('stg_sales__store')
 
       - name: territory_id
         description: "int. Identificador da região de vendas associada ao cliente."

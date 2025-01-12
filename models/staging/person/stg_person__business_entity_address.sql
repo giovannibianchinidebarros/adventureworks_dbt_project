@@ -5,7 +5,7 @@ WITH base AS (
 )
 
 SELECT
-    SAFE_CAST(JSON_VALUE(json_data, '$.businessentityid') AS INT64) AS business_entity_id,
+    SAFE_CAST(JSON_VALUE(json_data, '$.businessentityid') AS INT64) AS fk_business_entity_id,
     SAFE_CAST(JSON_VALUE(json_data, '$.addressid') AS INT64) AS address_id,
     SAFE_CAST(JSON_VALUE(json_data, '$.addresstypeid') AS INT64) AS address_type_id,
     JSON_VALUE(json_data, '$.rowguid') AS row_guid,

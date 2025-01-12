@@ -5,7 +5,7 @@ WITH base AS (
 )
 
 SELECT
-    SAFE_CAST(JSON_VALUE(json_data, '$.businessentityid') AS INT64) AS business_entity_id,
+    SAFE_CAST(JSON_VALUE(json_data, '$.businessentityid') AS INT64) AS fk_person_id,
     JSON_VALUE(json_data, '$.passwordhash') AS password_hash,
     JSON_VALUE(json_data, '$.passwordsalt') AS password_salt,
     JSON_VALUE(json_data, '$.rowguid') AS row_guid,
