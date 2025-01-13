@@ -5,7 +5,7 @@ WITH base AS (
 )
 
 SELECT
-    SAFE_CAST(JSON_VALUE(json_data, '$.creditcardid') AS INT64) AS credit_card_id,
+    SAFE_CAST(JSON_VALUE(json_data, '$.creditcardid') AS INT64) AS pk_credit_card_id,
     JSON_VALUE(json_data, '$.cardtype') AS card_type,
     JSON_VALUE(json_data, '$.cardnumber') AS card_number,
     SAFE_CAST(JSON_VALUE(json_data, '$.expmonth') AS INT64) AS exp_month,

@@ -4,7 +4,7 @@ models:
   - name: stg_production__product
     description: "Staging table para dados de produtos na produção."
     columns:
-      - name: product_id
+      - name: pk_product_id
         description: "chave primaria do produto."
         tests:
           - not_null
@@ -59,9 +59,19 @@ models:
 
       - name: size
 
-      - name: size_unit_measure_code
+      - name: fk_size_unit_measure_code
+        description: "size unit code"
+        tests:
+          - relationships:
+              field: pk_unit_measure_code
+              to: ref('stg_production__unit_measure')
 
-      - name: weight_unit_measure_code
+      - name: fk_weight_unit_measure_code
+        description: "weight unit code"
+        tests:
+          - relationships:
+              field: pk_unit_measure_code
+              to: ref('stg_production__unit_measure')
 
       - name: weight
         description: "Peso do produto."
@@ -89,7 +99,12 @@ models:
         #   - accepted_values:
         #       values: ['W', 'M', 'U']
 
-      - name: product_subcategory_id
+      - name: fk_product_subcategory_id
+        description: "product subcategory id"
+        tests:
+          - relationships:
+              field: pk_product_subcategory_id
+              to: ref('stg_production__product_subcategory')
 
       - name: product_model_id
 

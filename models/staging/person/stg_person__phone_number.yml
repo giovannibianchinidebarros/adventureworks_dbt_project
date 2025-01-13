@@ -18,13 +18,13 @@ models:
         tests:
           - not_null
 
-      - name: phone_number_type_id
+      - name: fk_phone_number_type_id
         description: "int. ID do tipo de telefone."
         tests:
           - not_null
-          - accepted_values:
-              values: [1, 2, 3]
-              quote: false
+          - relationships:
+              field: pk_phone_number_type_id
+              to: ref('stg_person__phone_number_type')
 
       - name: modified_date
         description: "Data da última modificação do registro."

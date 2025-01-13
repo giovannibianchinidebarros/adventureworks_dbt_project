@@ -5,7 +5,7 @@ WITH base AS (
 )
 
 SELECT
-    SAFE_CAST(JSON_VALUE(json_data, '$.addressid') AS INT64) AS address_id,
+    SAFE_CAST(JSON_VALUE(json_data, '$.addressid') AS INT64) AS pk_address_id,
 
     -- JSON_VALUE(json_data, '$.addressline1') AS address_line1,
     -- JSON_VALUE(json_data, '$.addressline2') AS address_line2,
@@ -16,7 +16,7 @@ SELECT
     ) AS full_address,  -- A coluna concatenada
 
     JSON_VALUE(json_data, '$.city') AS city,
-    SAFE_CAST(JSON_VALUE(json_data, '$.stateprovinceid') AS INT64) AS state_province_id,
+    SAFE_CAST(JSON_VALUE(json_data, '$.stateprovinceid') AS INT64) AS fk_state_province_id,
     JSON_VALUE(json_data, '$.postalcode') AS postal_code,
     JSON_VALUE(json_data, '$.spatiallocation') AS spatial_location,
     JSON_VALUE(json_data, '$.rowguid') AS row_guid,

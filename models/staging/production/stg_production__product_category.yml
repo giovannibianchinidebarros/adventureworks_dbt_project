@@ -5,7 +5,7 @@ models:
     description: "Staging table para dados de categorias de produtos."
     columns:
       
-      - name: product_category_id
+      - name: pk_product_category_id
         description: "Identificador único da categoria do produto."
         tests:
           - not_null

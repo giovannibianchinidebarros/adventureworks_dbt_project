@@ -5,7 +5,7 @@ WITH base AS (
 )
 
 SELECT
-    JSON_VALUE(json_data, '$.currencycode') AS currency_code,
+    JSON_VALUE(json_data, '$.currencycode') AS pk_currency_code,
     JSON_VALUE(json_data, '$.name') AS name,
     SAFE_CAST(JSON_VALUE(json_data, '$.modifieddate') AS DATETIME) AS modified_date
 FROM base

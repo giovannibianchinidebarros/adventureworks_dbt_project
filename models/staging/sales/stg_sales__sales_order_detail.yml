@@ -4,12 +4,15 @@ models:
   - name: stg_sales__sales_order_detail
     description: "Staging table para detalhes de ordens de venda. Produtos individuais associados a um pedido de venda específico. Consulte stg_sales__sales_order_Header."
     columns:
-      - name: sales_order_id
+      - name: fk_sales_order_id
         description: "int. Identificador único da ordem de venda."
         tests:
           - not_null
+          - relationships:
+              field: pk_sales_order_id
+              to: ref('stg_sales__sales_order_header')
 
-      - name: sales_order_detail_id
+      - name: pk_sales_order_detail_id
         description: "int. Um número incremental exclusivo por produto vendido."
         tests:
           - not_null
@@ -23,15 +26,21 @@ models:
         tests:
           - not_null
 
-      - name: product_id
+      - name: fk_product_id
         description: "int. Identificador único do produto vendido ao cliente."
         tests:
           - not_null
+          - relationships:
+              field: pk_product_id
+              to: ref('stg_production__product')
 
-      - name: special_offer_id
+      - name: fk_special_offer_id
         description: "int. Identificador único do Código promocional, tabela special_offer."
         tests:
           - not_null
+          - relationships:
+              field: pk_special_offer_id
+              to: ref('stg_sales__special_offer')
 
       - name: unit_price
         description: "float. Preço unitário do produto."

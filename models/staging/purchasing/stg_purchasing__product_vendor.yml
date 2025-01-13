@@ -4,15 +4,21 @@ models:
   - name: stg_purchasing__product_vendor
     description: "Staging table para informações de fornecedores com os produtos que foram fornecidos."
     columns:
-      - name: product_id
+      - name: fk_product_id
         description: "int. Identificador único do produto."
         tests:
           - not_null
+          - relationships:
+              field: pk_product_id
+              to: ref('stg_production__product')
 
-      - name: business_entity_id
-        description: "int. Identificador da entidade de negócios associada ao fornecedor."
+      - name: fk_vendor_id
+        description: "int. Identificador do fornecedor."
         tests:
           - not_null
+          - relationships:
+              field: pk_vendor_id
+              to: ref('stg_purchasing__vendor')
 
       - name: average_lead_time
         description: "int. O tempo médio (em dias) entre fazer um pedido ao fornecedor e receber o produto."

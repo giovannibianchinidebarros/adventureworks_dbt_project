@@ -5,19 +5,26 @@ models:
     description: "Staging table para estrutura de materiais de produção (BOM)."
     columns:
 
-      - name: bill_of_materials_id
+      - name: pk_bill_of_materials_id
         description: "Identificador único da estrutura de materiais."
         tests:
           - not_null
           - unique
 
-      - name: product_assembly_id
+      - name: fk_product_assembly_id
         description: "Identificador do produto montado, se aplicável (NULL indica componente individual)."
+        tests:
+          - relationships:
+              field: pk_product_id
+              to: ref('stg_production__product')
 
-      - name: component_id
+      - name: fk_product_component_id
         description: "Identificador do componente na montagem."
         tests:
           - not_null
+          - relationships:
+              field: pk_product_id
+              to: ref('stg_production__product')
 
       - name: start_date
         description: "Data de início da validade do item na BOM."
@@ -27,10 +34,13 @@ models:
       - name: end_date
         description: "Data de fim da validade do item na BOM (pode ser nulo)."
 
-      - name: unit_measure_code
+      - name: fk_unit_measure_code
         description: "Código da unidade de medida."
         tests:
           - not_null
+          - relationships:
+              field: pk_unit_measure_code
+              to: ref('stg_production__unit_measure')
 
       - name: bom_level
         description: "Nível hierárquico do componente na estrutura de materiais."

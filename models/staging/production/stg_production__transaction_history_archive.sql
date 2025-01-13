@@ -6,7 +6,7 @@ WITH base AS (
 
 SELECT
     SAFE_CAST(JSON_VALUE(json_data, '$.transactionid') AS INT64) AS transaction_id,
-    SAFE_CAST(JSON_VALUE(json_data, '$.productid') AS INT64) AS product_id,
+    SAFE_CAST(JSON_VALUE(json_data, '$.productid') AS INT64) AS fk_product_id,
     SAFE_CAST(JSON_VALUE(json_data, '$.referenceorderid') AS INT64) AS reference_order_id,
     SAFE_CAST(JSON_VALUE(json_data, '$.referenceorderlineid') AS INT64) AS reference_order_line_id,
     SAFE_CAST(JSON_VALUE(json_data, '$.transactiondate') AS DATETIME) AS transaction_date,

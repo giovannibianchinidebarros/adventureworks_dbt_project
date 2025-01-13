@@ -5,7 +5,7 @@ WITH base AS (
 )
 
 SELECT
-    SAFE_CAST(JSON_VALUE(json_data, '$.productid') AS INT64) AS product_id,
+    SAFE_CAST(JSON_VALUE(json_data, '$.productid') AS INT64) AS fk_product_id,
     SAFE_CAST(JSON_VALUE(json_data, '$.startdate') AS DATETIME) AS start_date,
     SAFE_CAST(JSON_VALUE(json_data, '$.enddate') AS DATETIME) AS end_date,
     SAFE_CAST(JSON_VALUE(json_data, '$.standardcost') AS FLOAT64) AS standard_cost,

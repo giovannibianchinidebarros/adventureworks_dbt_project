@@ -5,7 +5,7 @@ WITH base AS (
 )
 
 SELECT
-    SAFE_CAST(JSON_VALUE(json_data, '$.productphotoid') AS INT64) AS product_photo_id,
+    SAFE_CAST(JSON_VALUE(json_data, '$.productphotoid') AS INT64) AS pk_product_photo_id,
     JSON_VALUE(json_data, '$.thumbnailphoto') AS thumbnail_photo,
     JSON_VALUE(json_data, '$.thumbnailphotofilename') AS thumbnail_photo_filename,
     JSON_VALUE(json_data, '$.largephoto') AS large_photo,

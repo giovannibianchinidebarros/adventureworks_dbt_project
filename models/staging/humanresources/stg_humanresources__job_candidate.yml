@@ -5,14 +5,18 @@ models:
     description: "Staging table para os candidatos a emprego"
     columns:
 
-      - name: job_candidate_id
+      - name: pk_job_candidate_id
         description: "int. Identificador único do candidato"
         tests:
           - not_null
           - unique
 
-      - name: business_entity_id
+      - name: fk_employee_id
         description: "int. Número de identificação do funcionário se o candidato foi contratado."
+        tests:
+          - relationships:
+                field: pk_employee_id
+                to: ref('stg_humanresources__employee')
 
       - name: resume
         description: "str. currículo do candidato, em formato xml"

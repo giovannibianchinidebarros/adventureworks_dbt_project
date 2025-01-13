@@ -4,20 +4,29 @@ models:
   - name: stg_production__product_model_product_description_culture
     description: "Staging table para as descrições de produtos associadas a modelos de produto."
     columns:
-      - name: product_model_id
+      - name: fk_product_model_id
         description: "int. Identificador único do modelo de produto."
         tests:
           - not_null
+          - relationships:
+              field: pk_product_model_id
+              to: ref('stg_production__product_model')
 
-      - name: product_description_id
+      - name: fk_product_description_id
         description: "int. Identificador único da descrição do produto."
         tests:
           - not_null
+          - relationships:
+              field: pk_product_description_id
+              to: ref('stg_production__product_description')
 
-      - name: culture_id
+      - name: fk_culture_id
         description: "string. Identificador único da cultura."
         tests:
           - not_null
+          - relationships:
+              field: pk_culture_id
+              to: ref('stg_production__culture')
 
       - name: modified_date
         description: "datetime. Data da última modificação do registro."

@@ -5,7 +5,7 @@ WITH base AS (
 )
 
 SELECT
-    SAFE_CAST(JSON_VALUE(json_data, '$.shiftid') AS INT64) AS shift_id,
+    SAFE_CAST(JSON_VALUE(json_data, '$.shiftid') AS INT64) AS pk_shift_id,
     JSON_VALUE(json_data, '$.name') AS shift_name,
     SAFE_CAST(JSON_VALUE(json_data, '$.starttime') AS TIME) AS start_time,
     SAFE_CAST(JSON_VALUE(json_data, '$.endtime') AS TIME) AS end_time,

@@ -4,15 +4,21 @@ models:
   - name: stg_sales__sales_territory_history
     description: "Staging table para o quando o representante de vendas é transferido para outros territórios de vendas."
     columns:
-      - name: business_entity_id
-        description: "int. Identificador único da entidade de negócios."
+      - name: fk_salesperson_id
+        description: "int. Identificador único do vendedor."
         tests:
           - not_null
+          - relationships:
+                field: pk_salesperson_id
+                to: ref('stg_sales__sales_person')
 
-      - name: territory_id
+      - name: fk_territory_id
         description: "int. Identificador único do território."
         tests:
           - not_null
+          - relationships:
+                field: pk_territory_id
+                to: ref('stg_sales__sales_territory')
 
       - name: start_date
         description: "datetime. Data em que o representante comercial começou a trabalhar no território."

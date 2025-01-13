@@ -6,7 +6,7 @@ models:
     description: "staging da Tabela de endereços"
     columns:
 
-      - name: address_id
+      - name: pk_address_id
         description: "int. ID do endereço"
         tests:
           - not_null
@@ -22,10 +22,13 @@ models:
         tests:
           - not_null
 
-      - name: state_province_id
+      - name: fk_state_province_id
         description: "int. ID do estado ou província"
         tests:
           - not_null
+          - relationships:
+              field: pk_state_province_id
+              to: ref('stg_person__state_province')
 
       - name: postal_code
         description: "str. Código postal, ou CEP, da rua."

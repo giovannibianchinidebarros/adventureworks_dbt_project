@@ -10,10 +10,13 @@ models:
           - not_null
           - unique
 
-      - name: product_id
+      - name: fk_product_id
         description: "int. Identificador único do produto."
         tests:
           - not_null
+          - relationships:
+              field: pk_product_id
+              to: ref('stg_production__product')
 
       - name: reference_order_id
         description: "int. Purchase order, sales order, ou work order identification number."

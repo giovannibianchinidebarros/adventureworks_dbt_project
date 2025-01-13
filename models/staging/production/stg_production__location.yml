@@ -4,7 +4,7 @@ models:
   - name: stg_production__location
     description: "Staging table para dados de localização na produção."
     columns:
-      - name: location_id
+      - name: pk_location_id
         description: "Identificador único da localização."
         tests:
           - not_null

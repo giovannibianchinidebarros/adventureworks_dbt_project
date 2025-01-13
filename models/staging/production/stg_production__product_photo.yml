@@ -5,7 +5,7 @@ models:
     description: "Staging table para as fotos do produto, incluindo fotos em miniatura e grandes."
     columns:
 
-      - name: product_photo_id
+      - name: pk_product_photo_id
         description: "int. Identificador único da foto do produto."
         tests:
           - not_null

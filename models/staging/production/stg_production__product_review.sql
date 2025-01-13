@@ -5,8 +5,8 @@ WITH base AS (
 )
 
 SELECT
-    SAFE_CAST(JSON_VALUE(json_data, '$.productreviewid') AS INT64) AS product_review_id,
-    SAFE_CAST(JSON_VALUE(json_data, '$.productid') AS INT64) AS product_id,
+    SAFE_CAST(JSON_VALUE(json_data, '$.productreviewid') AS INT64) AS pk_product_review_id,
+    SAFE_CAST(JSON_VALUE(json_data, '$.productid') AS INT64) AS fk_product_id,
     JSON_VALUE(json_data, '$.reviewername') AS reviewer_name,
     SAFE_CAST(JSON_VALUE(json_data, '$.reviewdate') AS DATETIME) AS review_date,
     JSON_VALUE(json_data, '$.emailaddress') AS email_address,

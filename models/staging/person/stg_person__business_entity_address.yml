@@ -12,15 +12,21 @@ models:
               field: pk_business_entity_id
               to: ref('stg_person__business_entity')
 
-      - name: address_id
+      - name: fk_address_id
         description: "ID do endereço"
         tests:
           - not_null
+          - relationships:
+              field: pk_address_id
+              to: ref('stg_person__address')
 
-      - name: address_type_id
+      - name: fk_address_type_id
         description: "ID do tipo de endereço"
         tests:
           - not_null
+          - relationships:
+              field: pk_address_type_id
+              to: ref('stg_person__address_type')
 
       - name: row_guid
         description: "GUID único do registro"

@@ -5,16 +5,19 @@ models:
     description: "Staging table para subcategorias de produtos, com detalhes sobre a categoria e a modificação da subcategoria."
     columns:
       
-      - name: product_subcategory_id
+      - name: pk_product_subcategory_id
         description: "int. Identificador único da subcategoria do produto."
         tests:
           - not_null
           - unique
 
-      - name: product_category_id
+      - name: fk_product_category_id
         description: "int. Identificador único da categoria do produto."
         tests:
           - not_null
+          - relationships:
+              field: pk_product_category_id
+              to: ref('stg_production__product_category')
 
       - name: name
         description: "string. Nome da subcategoria do produto."

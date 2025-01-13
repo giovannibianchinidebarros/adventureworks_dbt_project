@@ -12,10 +12,13 @@ models:
               field: pk_person_id
               to: ref('stg_person__person')
 
-      - name: credit_card_id
+      - name: fk_credit_card_id
         description: "int. Identificador único do cartão de crédito."
         tests:
           - not_null
+          - relationships:
+              field: pk_credit_card_id
+              to: ref('stg_sales__credit_card')
 
       - name: modified_date
         description: "datetime. Data da última modificação do registro."

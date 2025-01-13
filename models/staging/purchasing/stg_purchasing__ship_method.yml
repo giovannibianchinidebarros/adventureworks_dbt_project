@@ -4,7 +4,7 @@ models:
   - name: stg_purchasing__ship_method
     description: "Staging para Tabela de consulta de companias de transporte."
     columns:
-      - name: ship_method_id
+      - name: pk_ship_method_id
         description: "int. Identificador único do método de envio."
         tests:
           - not_null

@@ -24,10 +24,13 @@ models:
               field: pk_store_id
               to: ref('stg_sales__store')
 
-      - name: territory_id
+      - name: fk_territory_id
         description: "int. Identificador da região de vendas associada ao cliente."
         tests:
           - not_null
+          - relationships:
+              field: pk_territory_id
+              to: ref('stg_sales__sales_territory')
 
       - name: row_guid
         description: "string. GUID único do registro."

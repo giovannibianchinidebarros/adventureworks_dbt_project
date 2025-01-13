@@ -7,6 +7,6 @@ WITH base AS (
 SELECT
     SAFE_CAST(JSON_VALUE(json_data, '$.businessentityid') AS INT64) AS fk_person_id,
     JSON_VALUE(json_data, '$.phonenumber') AS phone_number,
-    SAFE_CAST(JSON_VALUE(json_data, '$.phonenumbertypeid') AS INT64) AS phone_number_type_id,
+    SAFE_CAST(JSON_VALUE(json_data, '$.phonenumbertypeid') AS INT64) AS fk_phone_number_type_id,
     SAFE_CAST(JSON_VALUE(json_data, '$.modifieddate') AS DATETIME) AS modified_date
 FROM base

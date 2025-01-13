@@ -4,7 +4,7 @@ models:
   - name: stg_production__illustration
     description: "Staging table para ilustrações de produção."
     columns:
-      - name: illustration_id
+      - name: pk_illustration_id
         description: "Identificador único da ilustração."
         tests:
           - not_null

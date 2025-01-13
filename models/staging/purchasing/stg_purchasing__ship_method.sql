@@ -5,7 +5,7 @@ WITH base AS (
 )
 
 SELECT
-    SAFE_CAST(JSON_VALUE(json_data, '$.shipmethodid') AS INT64) AS ship_method_id,
+    SAFE_CAST(JSON_VALUE(json_data, '$.shipmethodid') AS INT64) AS pk_ship_method_id,
     JSON_VALUE(json_data, '$.name') AS name,
     SAFE_CAST(JSON_VALUE(json_data, '$.shipbase') AS FLOAT64) AS ship_base,
     SAFE_CAST(JSON_VALUE(json_data, '$.shiprate') AS FLOAT64) AS ship_rate,

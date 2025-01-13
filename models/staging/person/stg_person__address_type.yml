@@ -6,7 +6,7 @@ models:
     description: "Staging da Tabela de tipos de endereço."
     columns:
 
-      - name: address_type_id
+      - name: pk_address_type_id
         description: "int. ID do tipo de endereço"
         tests:
           - not_null

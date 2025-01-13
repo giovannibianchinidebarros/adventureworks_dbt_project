@@ -4,7 +4,7 @@ models:
   - name: stg_sales__sales_reason
     description: "Staging table para os motivos de vendas registrados no sistema."
     columns:
-      - name: sales_reason_id
+      - name: pk_sales_reason_id
         description: "int. Identificador único do motivo de venda."
         tests:
           - not_null

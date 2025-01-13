@@ -9,10 +9,13 @@ models:
         tests:
           - not_null
 
-      - name: owner
-        description: "int. Proprietário do documento. Employee.BusinessEntityID"
+      - name: fk_document_employee_owner_id
+        description: "int. Funcionário Proprietário do documento. Employee.BusinessEntityID"
         tests:
           - not_null
+          - relationships:
+              field: pk_employee_id
+              to: ref('stg_humanresources__employee')
 
       - name: folder_flag
         description: "0 = This is a folder, 1 = This is a document."
@@ -65,5 +68,5 @@ models:
         tests:
           - not_null
 
-      - name: document_node
-        description: ""
+      - name: pk_document_node
+        description: "chave primaria para documento"

@@ -5,7 +5,7 @@ models:
     description: "Staging table para as culturas de produção."
     columns:
       
-      - name: culture_id
+      - name: pk_culture_id
         description: "Identificador único da cultura de produção."
         tests:
           - not_null

@@ -4,7 +4,7 @@ models:
   - name: stg_purchasing__purchase_order_header
     description: "Staging table para cabeçalhos de pedidos de compra."
     columns:
-      - name: purchase_order_id
+      - name: pk_purchase_order_id
         description: "int. Identificador único do pedido de compra."
         tests:
           - not_null
@@ -23,20 +23,30 @@ models:
               values: [1, 2, 3, 4]
               quote: false
 
-      - name: employee_id
+      - name: fk_employee_id
         description: "int. Identificador do Funcionário que criou o pedido de compra."
         tests:
           - not_null
+          - relationships:
+                field: pk_employee_id
+                to: ref('stg_humanresources__employee')
 
-      - name: vendor_id
+      - name: fk_vendor_id
         description: "int. Identificador do fornecedor relacionado ao pedido."
         tests:
           - not_null
+          - relationships:
+              field: pk_vendor_id
+              to: ref('stg_purchasing__vendor')
+          
 
-      - name: ship_method_id
+      - name: fk_ship_method_id
         description: "int. Identificador do método de envio utilizado no pedido."
         tests:
           - not_null
+          - relationships:
+              field: pk_ship_method_id
+              to: ref('stg_purchasing__ship_method')
 
       - name: order_date
         description: "datetime. Data em que o pedido foi realizado."

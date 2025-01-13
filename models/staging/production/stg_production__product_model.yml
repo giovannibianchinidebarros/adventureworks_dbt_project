@@ -4,7 +4,7 @@ models:
   - name: stg_production__product_model
     description: "Staging table para os modelos de produtos."
     columns:
-      - name: product_model_id
+      - name: pk_product_model_id
         description: "int. Identificador único do modelo do produto."
         tests:
           - not_null

@@ -5,10 +5,13 @@ models:
     description: "Staging table para os preços dos produtos."
     columns:
 
-      - name: product_id
+      - name: fk_product_id
         description: "int. Identificador único do produto."
         tests:
           - not_null
+          - relationships:
+              field: pk_product_id
+              to: ref('stg_production__product')
 
       - name: start_date
         description: "datetime. Data de início da validade do preço."

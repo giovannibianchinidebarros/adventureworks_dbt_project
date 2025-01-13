@@ -5,16 +5,19 @@ models:
     description: "Staging table para o relacionamento entre produtos e avaliações, incluindo informações sobre o revisor e a avaliação."
     columns:
 
-      - name: product_review_id
+      - name: pk_product_review_id
         description: "int. Identificador único da avaliação do produto."
         tests:
           - not_null
           - unique
 
-      - name: product_id
+      - name: fk_product_id
         description: "int. Identificador único do produto avaliado."
         tests:
           - not_null
+          - relationships:
+              field: pk_product_id
+              to: ref('stg_production__product')
           
       - name: reviewer_name
         description: "string. Nome do revisor."

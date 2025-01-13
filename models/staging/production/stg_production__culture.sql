@@ -5,7 +5,7 @@ WITH base AS (
 )
 
 SELECT
-    JSON_VALUE(json_data, '$.cultureid') AS culture_id,
+    JSON_VALUE(json_data, '$.cultureid') AS pk_culture_id,
     JSON_VALUE(json_data, '$.name') AS name,
     SAFE_CAST(JSON_VALUE(json_data, '$.modifieddate') AS DATETIME) AS modified_date
 FROM base

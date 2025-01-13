@@ -5,7 +5,7 @@ models:
     description: "Staging para a tabela de paises/região."
     columns:
 
-      - name: country_region_code
+      - name: pk_country_region_code
         description: "str. Código padrão ISO para países e regiões."
         tests:
           - not_null

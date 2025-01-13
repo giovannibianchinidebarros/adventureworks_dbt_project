@@ -5,7 +5,7 @@ WITH base AS (
 )
 
 SELECT
-    SAFE_CAST(JSON_VALUE(json_data, '$.productid') AS INT64) AS product_id,
+    SAFE_CAST(JSON_VALUE(json_data, '$.productid') AS INT64) AS fk_product_id,
     SAFE_CAST(JSON_VALUE(json_data, '$.modifieddate') AS DATETIME) AS modified_date,
-    JSON_VALUE(json_data, '$.documentnode') AS document_node
+    JSON_VALUE(json_data, '$.documentnode') AS fk_document_node
 FROM base

@@ -4,7 +4,7 @@ models:
   - name: stg_sales__sales_order_header
     description: "Staging table para informações gerais sobre pedidos de vendas."
     columns:
-      - name: sales_order_id
+      - name: pk_sales_order_id
         description: "int. Identificador único da ordem de venda."
         tests:
           - not_null
@@ -50,36 +50,66 @@ models:
       - name: account_number
         description: "string. Número da conta associada à ordem de venda."
 
-      - name: customer_id
+      - name: fk_customer_id
         description: "int. Identificador único do cliente."
         tests:
           - not_null
+          - relationships:
+              field: pk_customer_id
+              to: ref('stg_sales__customer')
 
-      - name: salesperson_id
+      - name: fk_salesperson_id
         description: "int. Identificador único do vendedor responsável."
+        tests:
+          - relationships:
+              field: pk_salesperson_id
+              to: ref('stg_sales__sales_person')
 
-      - name: territory_id
+      - name: fk_territory_id
         description: "int. Identificador único do território de venda."
+        tests:
+          - relationships:
+              field: pk_territory_id
+              to: ref('stg_sales__sales_territory')
 
-      - name: bill_to_address_id
+      - name: fk_bill_to_address_id
         description: "int. Identificador do endereço de faturamento. Address.AddressID."
+        tests:
+          - relationships:
+              field: pk_address_id
+              to: ref('stg_person__address')
 
-      - name: ship_to_address_id
+      - name: fk_ship_to_address_id
         description: "int. Identificador do endereço de envio. Address.AddressID."
+        tests:
+          - relationships:
+              field: pk_address_id
+              to: ref('stg_person__address')
 
-      - name: ship_method_id
+      - name: fk_ship_method_id
         description: "int. Identificador do método de envio."
         tests:
           - not_null
+          - relationships:
+              field: pk_ship_method_id
+              to: ref('stg_purchasing__ship_method')
 
-      - name: credit_card_id
+      - name: fk_credit_card_id
         description: "int. Identificador do cartão de crédito usado para pagamento."
+        tests:
+          - relationships:
+              field: pk_credit_card_id
+              to: ref('stg_sales__credit_card')
 
       - name: credit_card_approval_code
         description: "string. Código de aprovação do cartão de crédito."
 
-      - name: currency_rate_id
+      - name: fk_currency_rate_id
         description: "int. Identificador da taxa de câmbio usada."
+        tests:
+          - relationships:
+              field: pk_currency_rate_id
+              to: ref('stg_sales__currency_rate')
 
       - name: subtotal
         description: "float. Valor total sem taxas e frete."

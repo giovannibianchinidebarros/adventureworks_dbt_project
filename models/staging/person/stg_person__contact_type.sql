@@ -5,7 +5,7 @@ WITH base AS (
 )
 
 SELECT
-    SAFE_CAST(JSON_VALUE(json_data, '$.contacttypeid') AS INT64) AS contact_type_id,
+    SAFE_CAST(JSON_VALUE(json_data, '$.contacttypeid') AS INT64) AS pk_contact_type_id,
     JSON_VALUE(json_data, '$.name') AS contact_type_name,
     SAFE_CAST(JSON_VALUE(json_data, '$.modifieddate') AS DATETIME) AS modified_date
 FROM base

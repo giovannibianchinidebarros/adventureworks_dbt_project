@@ -6,8 +6,8 @@ models:
     description: "Tabela de departamentos. Um departamento por linha."
     columns:
 
-      - name: department_id
-        description: "int. Chave primária."
+      - name: pk_department_id
+        description: "int. Chave primária do departamento."
         tests:
           - unique
           - not_null

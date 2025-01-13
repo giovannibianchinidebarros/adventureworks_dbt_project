@@ -5,7 +5,7 @@ WITH base AS (
 )
 
 SELECT
-    SAFE_CAST(JSON_VALUE(json_data, '$.salesreasonid') AS INT64) AS sales_reason_id,
+    SAFE_CAST(JSON_VALUE(json_data, '$.salesreasonid') AS INT64) AS pk_sales_reason_id,
     JSON_VALUE(json_data, '$.name') AS reason_name,
     JSON_VALUE(json_data, '$.reasontype') AS reason_type,
     SAFE_CAST(JSON_VALUE(json_data, '$.modifieddate') AS DATETIME) AS modified_date

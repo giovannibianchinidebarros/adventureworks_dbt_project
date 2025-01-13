@@ -4,7 +4,7 @@ models:
   - name: stg_person__contact_type
     description: "Staging para a tabela de tipos de contato."
     columns:
-      - name: contact_type_id
+      - name: pk_contact_type_id
         description: "int. Chave primaria para o tipo de contato."
         tests:
           - not_null

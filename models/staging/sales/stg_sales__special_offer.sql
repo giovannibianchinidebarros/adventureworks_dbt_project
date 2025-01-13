@@ -5,7 +5,7 @@ WITH base AS (
 )
 
 SELECT
-    SAFE_CAST(JSON_VALUE(json_data, '$.specialofferid') AS INT64) AS special_offer_id,
+    SAFE_CAST(JSON_VALUE(json_data, '$.specialofferid') AS INT64) AS pk_special_offer_id,
     JSON_VALUE(json_data, '$.description') AS discount_description,
     SAFE_CAST(JSON_VALUE(json_data, '$.discountpct') AS FLOAT64) AS discount_pct,
     JSON_VALUE(json_data, '$.type') AS discount_type,

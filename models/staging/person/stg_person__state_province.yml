@@ -5,8 +5,8 @@ models:
     description: "Staging table para informações de estados e províncias."
     columns:
 
-      - name: state_province_id
-        description: "Identificador único do estado ou província."
+      - name: pk_state_province_id
+        description: "int. Identificador único do estado ou província."
         tests:
           - not_null
           - unique
@@ -16,10 +16,13 @@ models:
         tests:
           - not_null
 
-      - name: country_region_code
+      - name: fk_country_region_code
         description: "str. Código de país ou região padrão ISO."
         tests:
           - not_null
+          - relationships:
+              field: pk_country_region_code
+              to: ref('stg_person__country_region')
 
       - name: is_only_state_province_flag
         description: "0 = StateProvinceCode exists. 1 = StateProvinceCode unavailable, using CountryRegionCode."
@@ -34,10 +37,13 @@ models:
         tests:
           - not_null
 
-      - name: territory_id
+      - name: fk_territory_id
         description: "ID do território em que o estado ou província está localizado."
         tests:
           - not_null
+          - relationships:
+              field: pk_territory_id
+              to: ref('stg_sales__sales_territory')
 
       - name: row_guid
         description: "Identificador global único (GUID) para o registro."

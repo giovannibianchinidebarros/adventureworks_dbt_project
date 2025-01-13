@@ -5,7 +5,7 @@ WITH base AS (
 )
 
 SELECT
-    JSON_VALUE(json_data, '$.unitmeasurecode') AS unit_measure_code,
+    JSON_VALUE(json_data, '$.unitmeasurecode') AS pk_unit_measure_code,
     JSON_VALUE(json_data, '$.name') AS unit_measure_name,
     SAFE_CAST(JSON_VALUE(json_data, '$.modifieddate') AS DATETIME) AS modified_date
 FROM base

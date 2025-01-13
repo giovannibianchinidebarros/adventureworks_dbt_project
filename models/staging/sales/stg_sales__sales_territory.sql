@@ -5,7 +5,7 @@ WITH base AS (
 )
 
 SELECT
-    SAFE_CAST(JSON_VALUE(json_data, '$.territoryid') AS INT64) AS territory_id,
+    SAFE_CAST(JSON_VALUE(json_data, '$.territoryid') AS INT64) AS pk_territory_id,
     JSON_VALUE(json_data, '$.name') AS territory_name,
     JSON_VALUE(json_data, '$.countryregioncode') AS country_region_code,
     JSON_VALUE(json_data, '$.group') AS territory_group,

@@ -6,7 +6,7 @@ WITH base AS (
 
 SELECT
     JSON_VALUE(json_data, '$.title') AS title,
-    SAFE_CAST(JSON_VALUE(json_data, '$.owner') AS INT64) AS owner,
+    SAFE_CAST(JSON_VALUE(json_data, '$.owner') AS INT64) AS fk_document_employee_owner_id,
     SAFE_CAST(JSON_VALUE(json_data, '$.folderflag') AS BOOL) AS folder_flag,
     JSON_VALUE(json_data, '$.filename') AS file_name,
     JSON_VALUE(json_data, '$.fileextension') AS file_extension,
@@ -17,5 +17,5 @@ SELECT
     JSON_VALUE(json_data, '$.document') AS document,
     JSON_VALUE(json_data, '$.rowguid') AS row_guid,
     SAFE_CAST(JSON_VALUE(json_data, '$.modifieddate') AS DATETIME) AS modified_date,
-    JSON_VALUE(json_data, '$.documentnode') AS document_node
+    JSON_VALUE(json_data, '$.documentnode') AS pk_document_node
 FROM base

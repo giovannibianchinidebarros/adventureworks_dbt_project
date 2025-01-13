@@ -4,7 +4,7 @@ models:
   - name: stg_sales__credit_card
     description: "Staging table para informações de cartões de crédito dos clientes."
     columns:
-      - name: credit_card_id
+      - name: pk_credit_card_id
         description: "int. Identificador único do cartão de crédito."
         tests:
           - not_null

@@ -4,7 +4,7 @@ models:
   - name: stg_sales__currency
     description: "Staging table para informações de moedas."
     columns:
-      - name: currency_code
+      - name: pk_currency_code
         description: "string. Código único que identifica a moeda (ex.: USD, EUR)."
         tests:
           - not_null

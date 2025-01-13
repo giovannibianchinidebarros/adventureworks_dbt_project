@@ -5,7 +5,7 @@ models:
     description: "Staging table para as unidades de medida dos produtos."
     columns:
 
-      - name: unit_measure_code
+      - name: pk_unit_measure_code
         description: "string. Código da unidade de medida do produto."
         tests:
           - not_null

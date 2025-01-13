@@ -5,8 +5,8 @@ WITH base AS (
 )
 
 SELECT
-    SAFE_CAST(JSON_VALUE(json_data, '$.specialofferid') AS INT64) AS special_offer_id,
-    SAFE_CAST(JSON_VALUE(json_data, '$.productid') AS INT64) AS product_id,
+    SAFE_CAST(JSON_VALUE(json_data, '$.specialofferid') AS INT64) AS fk_special_offer_id,
+    SAFE_CAST(JSON_VALUE(json_data, '$.productid') AS INT64) AS fk_product_id,
     JSON_VALUE(json_data, '$.rowguid') AS row_guid,
     SAFE_CAST(JSON_VALUE(json_data, '$.modifieddate') AS DATETIME) AS modified_date
 FROM base

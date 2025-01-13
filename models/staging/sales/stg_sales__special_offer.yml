@@ -4,7 +4,7 @@ models:
   - name: stg_sales__special_offer
     description: "Staging table para as ofertas especiais(desconts/promoções) de vendas."
     columns:
-      - name: special_offer_id
+      - name: pk_special_offer_id
         description: "int. Identificador único da oferta especial."
         tests:
           - not_null

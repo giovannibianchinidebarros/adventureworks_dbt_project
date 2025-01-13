@@ -14,18 +14,21 @@ models:
               field: pk_employee_id
               to: ref('stg_humanresources__employee')
 
-      - name: department_id
+      - name: fk_department_id
         description: "int. Identificador do departamento."
         tests:
           - not_null
+          - relationships:
+              field: pk_department_id
+              to: ref('stg_humanresources__department')
 
-      - name: shift_id
+      - name: fk_shift_id
         description: "int. Identificador do turno"
         tests:
           - not_null
-          - accepted_values:
-              values: [1, 2, 3] # Valores inteiros
-              quote: false # Impede a conversão para strings
+          - relationships:
+              field: pk_shift_id
+              to: ref('stg_humanresources__shift')
 
       - name: start_date
         description: "date. Data de início no departamento"

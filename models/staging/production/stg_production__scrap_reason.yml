@@ -5,7 +5,7 @@ models:
     description: "Staging table para motivos de descarte de produtos."
     columns:
 
-      - name: scrap_reason_id
+      - name: pk_scrap_reason_id
         description: "int. Identificador único do motivo de descarte."
         tests:
           - not_null

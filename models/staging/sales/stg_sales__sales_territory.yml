@@ -4,7 +4,7 @@ models:
   - name: stg_sales__sales_territory
     description: "Staging table para territórios de vendas, com informações sobre vendas, custos e modificações."
     columns:
-      - name: territory_id
+      - name: pk_territory_id
         description: "int. Identificador único do território."
         tests:
           - not_null

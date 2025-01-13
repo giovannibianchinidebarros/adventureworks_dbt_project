@@ -4,7 +4,7 @@ models:
   - name: stg_sales__sales_person
     description: "Staging table para informações sobre vendedores e suas métricas de desempenho."
     columns:
-      - name: salesperson_id
+      - name: pk_salesperson_id
         description: "int. Identificador único do vendedor. relacionado a stg_humanresources__employee.pk_employee_id"
         tests:
           - not_null
@@ -12,8 +12,12 @@ models:
               field: pk_employee_id
               to: ref('stg_humanresources__employee')
 
-      - name: territory_id
+      - name: fk_territory_id
         description: "int. Identificador da região territorial atribuída ao vendedor."
+        tests:
+          - relationships:
+              field: pk_territory_id
+              to: ref('stg_sales__sales_territory')
 
       - name: sales_quota
         description: "float. Meta de vendas atribuída ao vendedor."

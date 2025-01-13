@@ -5,8 +5,8 @@ WITH base AS (
 )
 
 SELECT
-    SAFE_CAST(JSON_VALUE(json_data, '$.businessentityid') AS INT64) AS salesperson_id,
-    SAFE_CAST(JSON_VALUE(json_data, '$.territoryid') AS INT64) AS territory_id,
+    SAFE_CAST(JSON_VALUE(json_data, '$.businessentityid') AS INT64) AS pk_salesperson_id,
+    SAFE_CAST(JSON_VALUE(json_data, '$.territoryid') AS INT64) AS fk_territory_id,
     SAFE_CAST(JSON_VALUE(json_data, '$.salesquota') AS FLOAT64) AS sales_quota,
     SAFE_CAST(JSON_VALUE(json_data, '$.bonus') AS FLOAT64) AS bonus,
     SAFE_CAST(JSON_VALUE(json_data, '$.commissionpct') AS FLOAT64) AS commission_pct,

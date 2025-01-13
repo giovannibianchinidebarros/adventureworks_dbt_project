@@ -4,15 +4,21 @@ models:
   - name: stg_production__product_inventory
     description: "Staging table para o inventário de produtos."
     columns:
-      - name: product_id
+      - name: fk_product_id
         description: "int. Identificador único do produto."
         tests:
           - not_null
+          - relationships:
+              field: pk_product_id
+              to: ref('stg_production__product')
 
-      - name: location_id
+      - name: fk_location_id
         description: "int. Identificador único do local onde o produto está armazenado."
         tests:
           - not_null
+          - relationships:
+              field: pk_location_id
+              to: ref('stg_production__location')
 
       - name: shelf
         description: "string. Localização específica na prateleira."

@@ -4,12 +4,15 @@ models:
   - name: stg_purchasing__purchase_order_detail
     description: "Staging table para Produtos individuais associados a um pedido de compra específico. Consulte purchase_order_header."
     columns:
-      - name: purchase_order_id
+      - name: fk_purchase_order_id
         description: "int. Identificador único do pedido de compra."
         tests:
           - not_null
+          - relationships:
+              field: pk_purchase_order_id
+              to: ref('stg_purchasing__purchase_order_header')
 
-      - name: purchase_order_detail_id
+      - name: pk_purchase_order_detail_id
         description: "int. Identificador único do detalhe/linha do pedido de compra."
         tests:
           - not_null
@@ -24,10 +27,13 @@ models:
         tests:
           - not_null
 
-      - name: product_id
+      - name: fk_product_id
         description: "int. Identificador único do produto associado ao pedido."
         tests:
           - not_null
+          - relationships:
+              field: pk_product_id
+              to: ref('stg_production__product')
 
       - name: unit_price
         description: "float. Preço unitário do produto no pedido."
