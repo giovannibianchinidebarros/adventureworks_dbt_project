@@ -11,7 +11,7 @@ models:
           - not_null
           - unique
 
-      - name: name
+      - name: culture_name
         description: "Nome da cultura de produção."
         tests:
           - not_null

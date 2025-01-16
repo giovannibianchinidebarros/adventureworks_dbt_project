@@ -19,7 +19,7 @@ models:
               field: pk_product_category_id
               to: ref('stg_production__product_category')
 
-      - name: name
+      - name: subcategory_name
         description: "string. Nome da subcategoria do produto."
         tests:
           - not_null
