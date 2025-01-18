@@ -26,6 +26,7 @@ entity_address AS (
 ,final AS (
     SELECT
         entity_address.fk_business_entity_id AS entity_id
+        , address.pk_address_id as address_id
         , address.full_address
         , address.city
         , state_province.state_province_code

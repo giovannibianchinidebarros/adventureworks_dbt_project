@@ -14,10 +14,6 @@ person AS (
             END) AS full_name
     FROM {{ ref("stg_person__person") }}
 )
-, address AS (
-    SELECT * 
-    FROM {{ ref("int_address") }}
-)
 , phone_number AS (
     SELECT * 
     FROM {{ ref("stg_person__phone_number") }}
@@ -44,21 +40,10 @@ person AS (
         person.pk_person_id AS person_id
         , person.person_type as person_type
         , person.full_name AS person_name
-        , address.full_address as person_address
-        , address.city
-        , address.state_province_code
-        , address.state_province_name
-        , address.country_region_code
-        , address.country_region_name
-        , address.territory_id
-        , address.postal_code
-        , address.address_type
         , phone_number.phone_number as phone
         , phone_number_type.phone_number_type_name as phone_type
         , email.email_address
     FROM person
-    LEFT JOIN address 
-        ON person.pk_person_id = address.entity_id
     LEFT JOIN email 
         ON person.pk_person_id = email.fk_person_id
     LEFT JOIN phone_number 
