@@ -1,0 +1,26 @@
+version: 2
+
+models:
+  - name: stg_production__product_document
+    description: "Staging table para documentos de produtos."
+    columns:
+      - name: fk_product_id
+        description: "int. Identificador único do produto."
+        tests:
+          - not_null
+          - relationships:
+              field: pk_product_id
+              to: ref('stg_production__product')
+
+      - name: modified_date
+        description: "datetime. Data da última modificação do documento."
+        tests:
+          - not_null
+
+      - name: fk_document_node
+        description: "string. Identificador único do nó do documento."
+        tests:
+          - not_null
+          - relationships:
+              field: pk_document_node
+              to: ref('stg_production__document')

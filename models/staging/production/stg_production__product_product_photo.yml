@@ -1,0 +1,35 @@
+version: 2
+
+models:
+  - name: stg_production__product_product_photo
+    description: "Staging table para o relacionamento entre produtos e fotos, incluindo a indicação da foto principal."
+    columns:
+
+      - name: fk_product_id
+        description: "int. Identificador único do produto."
+        tests:
+          - not_null
+          - relationships:
+              field: pk_product_id
+              to: ref('stg_production__product')
+
+      - name: fk_product_photo_id
+        description: "int. Identificador único da foto do produto."
+        tests:
+          - not_null
+          - relationships:
+              field: pk_product_photo_id
+              to: ref('stg_production__product_photo')
+
+      - name: is_primary
+        description: "boolean. 0 = Photo is not the principal image. 1 = Photo is the principal image."
+        tests:
+          - not_null
+          - accepted_values:
+              values: [true, false]
+              quote: false
+
+      - name: modified_date
+        description: "datetime. Data da última modificação do registro."
+        tests:
+          - not_null

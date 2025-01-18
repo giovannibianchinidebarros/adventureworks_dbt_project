@@ -1,0 +1,32 @@
+version: 2
+
+models:
+  - name: stg_person__phone_number
+
+    description: "Staging table para números de telefone."
+    columns:
+      - name: fk_person_id
+        description: "int. ID da pessoa."
+        tests:
+          - not_null
+          - relationships:
+              field: pk_person_id
+              to: ref('stg_person__person')
+
+      - name: phone_number
+        description: "str. Número de telefone."
+        tests:
+          - not_null
+
+      - name: fk_phone_number_type_id
+        description: "int. ID do tipo de telefone."
+        tests:
+          - not_null
+          - relationships:
+              field: pk_phone_number_type_id
+              to: ref('stg_person__phone_number_type')
+
+      - name: modified_date
+        description: "Data da última modificação do registro."
+        tests:
+          - not_null

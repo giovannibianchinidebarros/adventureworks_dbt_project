@@ -1,0 +1,57 @@
+version: 2
+
+models:
+  - name: stg_purchasing__vendor
+    description: "Staging table para informações de fornecedores."
+    columns:
+      - name: pk_vendor_id
+        description: "int. Chave primária do fornecedor. relacionada com stg_person__business_entity.pk_business_entity_id"
+        tests:
+          - not_null
+          - unique
+          - relationships:
+              field: pk_business_entity_id
+              to: ref('stg_person__business_entity')
+
+      - name: account_number
+        description: "string. Número da conta/identificação do fornecedor."
+        tests:
+          - not_null
+
+      - name: name
+        description: "string. Nome do fornecedor."
+        tests:
+          - not_null
+
+      - name: credit_rating
+        description: "int. 1 = Superior, 2 = Excellent, 3 = Above average, 4 = Average, 5 = Below average"
+        tests:
+          - not_null
+          - accepted_values:
+              values: [1, 2, 3, 4, 5]
+              quote: false
+
+      - name: preferred_vendor_status
+        description: "bool. 0 = Do not use if another vendor is available. 1 = Preferred over other vendors supplying the same product."
+        tests:
+          - not_null
+          - accepted_values:
+              values: [true, false]
+              quote: false
+          
+
+      - name: active_flag
+        description: "bool. 0 = Vendor no longer used. 1 = Vendor is actively used."
+        tests:
+          - not_null
+          - accepted_values:
+              values: [true, false]
+              quote: false
+
+      - name: purchasing_web_service_url
+        description: "string. URL do fornecedor."
+
+      - name: modified_date
+        description: "datetime. Data da última modificação do registro."
+        tests:
+          - not_null

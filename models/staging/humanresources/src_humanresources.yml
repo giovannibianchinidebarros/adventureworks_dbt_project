@@ -1,0 +1,13 @@
+version: 2
+
+sources:
+  - name: humanresources
+    database: adventureworks-project
+    schema: adventureworks_dataset
+    tables: 
+      - name: humanresources_department        
+      - name: humanresources_employee
+      - name: humanresources_employeedepartmenthistory
+      - name: humanresources_employeepayhistory
+      - name: humanresources_jobcandidate
+      - name: humanresources_shift

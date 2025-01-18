@@ -1,0 +1,21 @@
+version: 2
+
+models:
+  - name: stg_sales__currency
+    description: "Staging table para informações de moedas."
+    columns:
+      - name: pk_currency_code
+        description: "string. Código único que identifica a moeda (ex.: USD, EUR)."
+        tests:
+          - not_null
+          - unique
+
+      - name: name
+        description: "string. Nome da moeda (ex.: Dollar, Euro)."
+        tests:
+          - not_null
+
+      - name: modified_date
+        description: "datetime. Data da última modificação do registro."
+        tests:
+          - not_null

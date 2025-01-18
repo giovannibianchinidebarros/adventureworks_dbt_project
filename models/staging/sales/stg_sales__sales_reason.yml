@@ -1,0 +1,27 @@
+version: 2
+
+models:
+  - name: stg_sales__sales_reason
+    description: "Staging table para os motivos de vendas registrados no sistema."
+    columns:
+      - name: pk_sales_reason_id
+        description: "int. Identificador único do motivo de venda."
+        tests:
+          - not_null
+          - unique
+
+      - name: reason_name
+        description: "string. Nome do motivo de venda."
+        tests:
+          - not_null
+          - unique
+
+      - name: reason_type
+        description: "string. Tipo de motivo de venda."
+        tests:
+          - not_null
+
+      - name: modified_date
+        description: "datetime. Data da última modificação do registro."
+        tests:
+          - not_null

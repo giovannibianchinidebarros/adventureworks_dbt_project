@@ -1,0 +1,57 @@
+version: 2
+
+models:
+  - name: stg_sales__special_offer
+    description: "Staging table para as ofertas especiais(desconts/promoções) de vendas."
+    columns:
+      - name: pk_special_offer_id
+        description: "int. Identificador único da oferta especial."
+        tests:
+          - not_null
+          - unique
+
+      - name: discount_description
+        description: "string. Descrição da oferta especial."
+        tests:
+          - not_null
+
+      - name: discount_pct
+        description: "float. Percentual de desconto oferecido pela oferta."
+        tests:
+          - not_null
+
+      - name: discount_type
+        description: "string. Tipo de oferta especial."
+        tests:
+          - not_null
+
+      - name: discount_group
+        description: "string. Categoria da oferta especial."
+        tests:
+          - not_null
+
+      - name: start_date
+        description: "datetime. Data de início da oferta especial."
+        tests:
+          - not_null
+
+      - name: end_date
+        description: "datetime. Data de término da oferta especial."
+        tests:
+          - not_null
+
+      - name: min_qty
+        description: "int. Quantidade mínima para a oferta ser válida."
+
+      - name: max_qty
+        description: "int. Quantidade máxima para a oferta ser válida."
+
+      - name: row_guid
+        description: "string. Identificador único global da oferta especial."
+        tests:
+          - not_null
+
+      - name: modified_date
+        description: "datetime. Data da última modificação da oferta especial."
+        tests:
+          - not_null

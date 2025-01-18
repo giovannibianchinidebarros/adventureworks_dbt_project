@@ -1,0 +1,26 @@
+version: 2
+
+models:
+  - name: stg_sales__country_region_currency
+    description: "Staging table para associar códigos de região e moedas."
+    columns:
+      - name: fk_country_region_code
+        description: "string. Código da região ou país."
+        tests:
+          - not_null
+          - relationships:
+              field: pk_country_region_code
+              to: ref('stg_person__country_region')
+
+      - name: fk_currency_code
+        description: "string. Código da moeda associada à região ou país."
+        tests:
+          - not_null
+          - relationships:
+              field: pk_currency_code
+              to: ref('stg_sales__currency')
+
+      - name: modified_date
+        description: "datetime. Data da última modificação do registro."
+        tests:
+          - not_null

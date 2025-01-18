@@ -1,0 +1,26 @@
+version: 2
+
+sources:
+  - name: sales
+    database: adventureworks-project
+    schema: adventureworks_dataset
+    tables: 
+      - name: sales_countryregioncurrency
+      - name: sales_creditcard
+      - name: sales_currency
+      - name: sales_currencyrate
+      - name: sales_customer
+      - name: sales_personcreditcard
+      - name: sales_salesorderdetail
+      - name: sales_salesorderheader
+      - name: sales_salesorderheadersalesreason
+      - name: sales_salesperson
+      - name: sales_salespersonquotahistory
+      - name: sales_salesreason
+      - name: sales_salestaxrate
+      - name: sales_salesterritory
+      - name: sales_salesterritoryhistory
+      - name: sales_shoppingcartitem
+      - name: sales_specialoffer
+      - name: sales_specialofferproduct
+      - name: sales_store

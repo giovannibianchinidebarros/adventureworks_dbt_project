@@ -1,0 +1,36 @@
+version: 2
+
+models:
+
+  - name: stg_humanresources__department
+    description: "Tabela de departamentos. Um departamento por linha."
+    columns:
+
+      - name: pk_department_id
+        description: "int. Chave primária do departamento."
+        tests:
+          - unique
+          - not_null
+
+      - name: department_name
+        description: "str. Nome do departamento."
+        tests:
+          - unique
+          - not_null
+
+      - name: department_group_name
+        description: "str. Nome do grupo ao qual o departamento pertence."
+        tests:
+          - accepted_values:
+              values:
+                - "Executive General and Administration"
+                - "Inventory Management"
+                - "Manufacturing"
+                - "Quality Assurance"
+                - "Research and Development"
+                - "Sales and Marketing"
+
+      - name: department_modified_date
+        description: "datetime. Data de modificação, convertida para datetime."
+        tests:
+          - not_null

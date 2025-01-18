@@ -1,0 +1,33 @@
+version: 2
+
+models:
+  - name: stg_humanresources__shift
+    description: "Modelo de staging para a tabele de turnos dos funcionários"
+    columns:
+      - name: pk_shift_id
+        description: "int. Identificador único do turno"
+        tests:
+          - not_null
+          - unique
+          
+      - name: shift_name
+        description: "str. Nome do turno."
+        tests:
+          - not_null
+          - unique
+
+      - name: start_time
+        description: "time. Hora de início do turno"
+        tests:
+          - not_null
+          
+      - name: end_time
+        description: "time. Hora de término do turno"
+        tests:
+          - not_null
+
+      - name: modified_date
+        description: "datetime. Data de modificação do registro."
+        tests:
+          - not_null
+

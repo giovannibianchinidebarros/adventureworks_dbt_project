@@ -1,0 +1,12 @@
+version: 2
+
+sources:
+  - name: purchasing
+    database: adventureworks-project
+    schema: adventureworks_dataset
+    tables: 
+      - name: purchasing_productvendor
+      - name: purchasing_purchaseorderdetail
+      - name: purchasing_purchaseorderheader
+      - name: purchasing_shipmethod
+      - name: purchasing_vendor

@@ -1,0 +1,49 @@
+version: 2
+
+models:
+
+  - name: stg_person__address
+    description: "staging da Tabela de endereços"
+    columns:
+
+      - name: pk_address_id
+        description: "int. ID do endereço"
+        tests:
+          - not_null
+          - unique
+      
+      - name: full_address
+        description: "str. Endereço completo. Concatena os campos addressline1 e addressline2."
+        tests:
+          - not_null
+
+      - name: city
+        description: "str. Nome da Cidade."
+        tests:
+          - not_null
+
+      - name: fk_state_province_id
+        description: "int. ID do estado ou província"
+        tests:
+          - not_null
+          - relationships:
+              field: pk_state_province_id
+              to: ref('stg_person__state_province')
+
+      - name: postal_code
+        description: "str. Código postal, ou CEP, da rua."
+        tests:
+          - not_null
+
+      - name: spatial_location
+        description: "str. Latitude e longitude deste endereço."
+
+      - name: row_guid
+        description: "str. GUID único do registro"
+        tests:
+          - not_null
+
+      - name: modified_date
+        description: "datetime. Data da última modificação"
+        tests:
+          - not_null

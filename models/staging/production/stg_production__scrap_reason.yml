@@ -1,0 +1,23 @@
+version: 2
+
+models:
+  - name: stg_production__scrap_reason
+    description: "Staging table para motivos de descarte de produtos."
+    columns:
+
+      - name: pk_scrap_reason_id
+        description: "int. Identificador único do motivo de descarte."
+        tests:
+          - not_null
+          - unique
+
+      - name: scrap_reason_name
+        description: "string. Nome/Descrição do motivo de descarte."
+        tests:
+          - not_null
+          - unique
+
+      - name: modified_date
+        description: "datetime. Data da última modificação do registro."
+        tests:
+          - not_null

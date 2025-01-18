@@ -1,0 +1,27 @@
+version: 2
+
+models:
+  - name: stg_humanresources__job_candidate
+    description: "Staging table para os candidatos a emprego"
+    columns:
+
+      - name: pk_job_candidate_id
+        description: "int. Identificador único do candidato"
+        tests:
+          - not_null
+          - unique
+
+      - name: fk_employee_id
+        description: "int. Número de identificação do funcionário se o candidato foi contratado."
+        tests:
+          - relationships:
+                field: pk_employee_id
+                to: ref('stg_humanresources__employee')
+
+      - name: resume
+        description: "str. currículo do candidato, em formato xml"
+
+      - name: modified_date
+        description: "datetime. Data da última modificação"
+        tests:
+          - not_null

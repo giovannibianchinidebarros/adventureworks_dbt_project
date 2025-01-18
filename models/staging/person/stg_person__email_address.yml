@@ -1,0 +1,34 @@
+version: 2
+
+models:
+  - name: stg_person__email_address
+    description: "Staging para tabela de emails."
+    columns:
+      - name: fk_person_id
+        description: "int. Pessoa associada a este endereço de e-mail. relacionado com stg_person__person.pk_person_id"
+        tests:
+          - not_null
+          - unique
+          - relationships:
+              field: pk_person_id
+              to: ref('stg_person__person')
+
+      - name: pk_email_address_id
+        description: "int. Chave primária. ID deste endereço de e-mail."
+        tests:
+          - not_null
+          - unique
+
+      - name: email_address
+        description: "Endereço de e-mail da pessoa."
+
+      - name: row_guid
+        description: "Identificador unico da linha."
+        tests:
+          - not_null
+          - unique
+
+      - name: modified_date
+        description: "Timestamp da ultima mdificação."
+        tests:
+          - not_null

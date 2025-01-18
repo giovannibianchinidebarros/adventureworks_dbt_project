@@ -1,0 +1,23 @@
+version: 2
+
+models:
+  - name: stg_production__unit_measure
+    description: "Staging table para as unidades de medida dos produtos."
+    columns:
+
+      - name: pk_unit_measure_code
+        description: "string. Código da unidade de medida do produto."
+        tests:
+          - not_null
+          - unique
+
+      - name: unit_measure_name
+        description: "string. Nome/Descrição da unidade de medida do produto."
+        tests:
+          - not_null
+          - unique
+
+      - name: modified_date
+        description: "datetime. Data da última modificação da unidade de medida."
+        tests:
+          - not_null

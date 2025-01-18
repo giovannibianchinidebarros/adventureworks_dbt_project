@@ -1,0 +1,21 @@
+version: 2
+
+models:
+  - name: stg_production__illustration
+    description: "Staging table para ilustrações de produção."
+    columns:
+      - name: pk_illustration_id
+        description: "Identificador único da ilustração."
+        tests:
+          - not_null
+          - unique
+
+      - name: diagram
+        description: "Conteúdo XML do diagrama da ilustração."
+        tests:
+          - not_null
+
+      - name: modified_date
+        description: "Data da última modificação da ilustração."
+        tests:
+          - not_null

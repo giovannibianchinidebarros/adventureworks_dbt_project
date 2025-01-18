@@ -1,0 +1,38 @@
+version: 2
+
+models:
+
+  - name: stg_person__business_entity_contact
+    description: "Tabela de contatos associados às pessoas"
+    columns:
+
+      - name: fk_business_entity_id
+        description: "ID. relacionado com stg_person__business_entity.pk_business_entity_id"
+        tests:
+          - not_null
+          - relationships:
+              field: pk_business_entity_id
+              to: ref('stg_person__business_entity')
+
+      - name: fk_person_id
+        description: "ID da pessoa"
+        tests:
+          - not_null
+          - relationships:
+              field: pk_person_id
+              to: ref('stg_person__person')
+
+      - name: fk_contact_type_id
+        description: "ID do tipo de contato"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('pk_contact_type_id')
+              field: stg_person__contact_type
+
+      - name: row_guid
+        description: "GUID único do registro"
+      - name: modified_date
+        description: "Data da última modificação"
+        tests:
+          - not_null

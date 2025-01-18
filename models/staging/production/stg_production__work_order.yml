@@ -1,0 +1,55 @@
+version: 2
+
+models:
+  - name: stg_production__work_order
+    description: "Staging table para as ordens de produção."
+    columns:
+
+      - name: pk_work_order_id
+        description: "int. Identificador único da ordem de produção."
+        tests:
+          - not_null
+          - unique
+
+      - name: fk_product_id
+        description: "int. Identificador do produto relacionado à ordem de produção."
+        tests:
+          - not_null
+          - relationships:
+              field: pk_product_id
+              to: ref('stg_production__product')
+
+      - name: order_qty
+        description: "int. Quantidade solicitada na ordem de produção."
+        tests:
+          - not_null
+
+      - name: scrapped_qty
+        description: "int. Quantidade descartada na ordem de produção."
+        tests:
+          - not_null
+
+      - name: start_date
+        description: "datetime. Data de início da ordem de produção."
+        tests:
+          - not_null
+
+      - name: end_date
+        description: "datetime. Data de término da ordem de produção."
+
+      - name: due_date
+        description: "datetime. Data de vencimento da ordem de produção."
+        tests:
+          - not_null
+
+      - name: fk_scrap_reason_id
+        description: "int. Identificador do motivo do descarte, se houver."
+        tests:
+          - relationships:
+              field: pk_scrap_reason_id
+              to: ref('stg_production__scrap_reason')
+
+      - name: modified_date
+        description: "datetime. Data da última modificação da ordem de produção."
+        tests:
+          - not_null

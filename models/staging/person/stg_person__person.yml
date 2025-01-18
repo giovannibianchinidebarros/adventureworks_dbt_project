@@ -1,0 +1,74 @@
+version: 2
+
+models:
+  - name: stg_person__person
+    description: "Staging table for person details in the person schema."
+    columns:
+      
+      - name: pk_person_id
+        description: "int. Chave primaria da pessoa. Relacionada com stg_person__business_entity.pk_business_entity_id"
+        tests:
+          - not_null
+          - unique
+          - relationships:
+              field: pk_business_entity_id
+              to: ref('stg_person__business_entity')
+
+      - name: person_type
+        description: "str. Tipo da pessoa: SC = Store Contact, IN = Individual (retail) customer, SP = Sales person, EM = Employee (non-sales), VC = Vendor contact, GC = General contact"
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['SC', 'IN', 'SP', 'EM', 'VC', 'GC']
+
+      - name: name_style
+        description: "false = Os dados em FirstName e LastName são armazenados na ordem de estilo ocidental (primeiro nome, último nome). true = Ordem de estilo oriental (sobrenome, primeiro nome)."
+        tests:
+          - not_null
+          - accepted_values:
+              values: [true, false]
+              quote: false
+
+      - name: title
+        description: "str. opcional. Um título de cortesia. Por exemplo, Sr. ou Sra."
+
+      - name: first_name
+        description: "Primeiro nome da pessoa."
+        tests:
+          - not_null
+      
+      - name: middle_name
+        description: "str. opcional. Nome do meio ou inicial do nome do meio da pessoa."
+
+      - name: last_name
+        description: "Sobrenome da pessoa."
+        tests:
+          - not_null
+      
+      - name: suffix
+        description: "str. opcional. Sufixo de sobrenome. Por exemplo, Sr. ou Jr."
+
+      - name: email_promotion
+        description: "int. 0 = O contato não deseja receber promoções por e-mail, 1 = O contato deseja receber promoções por e-mail da AdventureWorks, 2 = O contato deseja receber promoções por e-mail da AdventureWorks e de parceiros selecionados."
+        tests:
+          - not_null
+          - accepted_values:
+              values: [0, 1, 2]
+              quote: false
+      
+      - name: additional_contact_info
+        description: "str. Informações adicionais de contato sobre a pessoa armazenadas em formato xml."
+      
+      - name: demographics
+        description: "str. Informações pessoais como hobbies e renda coletadas de compradores online. Usado para análise de vendas, armazenadas em formato xml"
+
+      - name: row_guid
+        description: "str. Identificador unico da linha."
+        tests:
+          - not_null
+          - unique
+
+      - name: modified_date
+        description: "Timestamp of when the record was last modified."
+        tests:
+          - not_null

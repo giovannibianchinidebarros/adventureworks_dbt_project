@@ -1,0 +1,28 @@
+version: 2
+
+models:
+
+  - name: stg_person__address_type
+    description: "Staging da Tabela de tipos de endereço."
+    columns:
+
+      - name: pk_address_type_id
+        description: "int. ID do tipo de endereço"
+        tests:
+          - not_null
+          - unique
+
+      - name: address_type_name
+        description: "str. Nome/Descrição do tipo de endereço. Por exemplo: Faturamento, Residência ou Envio."
+        tests:
+          - not_null
+
+      - name: row_guid
+        description: "str. GUID único do registro"
+        tests:
+          - not_null
+
+      - name: modified_date
+        description: "datetime. Data da última modificação"
+        tests:
+          - not_null

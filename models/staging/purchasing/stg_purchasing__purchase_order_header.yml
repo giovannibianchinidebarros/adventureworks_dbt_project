@@ -1,0 +1,77 @@
+version: 2
+
+models:
+  - name: stg_purchasing__purchase_order_header
+    description: "Staging table para cabeçalhos de pedidos de compra."
+    columns:
+      - name: pk_purchase_order_id
+        description: "int. Identificador único do pedido de compra."
+        tests:
+          - not_null
+          - unique
+
+      - name: revision_number
+        description: "int. Número incremental para rastrear alterações na ordem de compra ao longo do tempo."
+        tests:
+          - not_null
+
+      - name: status
+        description: "int. Status do pedido de compra. 1 = Pending; 2 = Approved; 3 = Rejected; 4 = Complete"
+        tests:
+          - not_null
+          - accepted_values:
+              values: [1, 2, 3, 4]
+              quote: false
+
+      - name: fk_employee_id
+        description: "int. Identificador do Funcionário que criou o pedido de compra."
+        tests:
+          - not_null
+          - relationships:
+                field: pk_employee_id
+                to: ref('stg_humanresources__employee')
+
+      - name: fk_vendor_id
+        description: "int. Identificador do fornecedor relacionado ao pedido."
+        tests:
+          - not_null
+          - relationships:
+              field: pk_vendor_id
+              to: ref('stg_purchasing__vendor')
+          
+
+      - name: fk_ship_method_id
+        description: "int. Identificador do método de envio utilizado no pedido."
+        tests:
+          - not_null
+          - relationships:
+              field: pk_ship_method_id
+              to: ref('stg_purchasing__ship_method')
+
+      - name: order_date
+        description: "datetime. Data em que o pedido foi realizado."
+        tests:
+          - not_null
+
+      - name: ship_date
+        description: "datetime. Data estimada em que o pedido foi enviado."
+
+      - name: sub_total
+        description: "float. Subtotal do pedido antes dos impostos e frete."
+        tests:
+          - not_null
+
+      - name: tax_amount
+        description: "float. Valor total dos impostos aplicados ao pedido."
+        tests:
+          - not_null
+
+      - name: freight
+        description: "float. Valor do frete para o pedido."
+        tests:
+          - not_null
+
+      - name: modified_date
+        description: "datetime. Data da última modificação do registro."
+        tests:
+          - not_null

@@ -1,0 +1,64 @@
+version: 2
+
+models:
+  - name: stg_sales__sales_order_detail
+    description: "Staging table para detalhes de ordens de venda. Produtos individuais associados a um pedido de venda específico. Consulte stg_sales__sales_order_Header."
+    columns:
+      - name: fk_sales_order_id
+        description: "int. Identificador único da ordem de venda."
+        tests:
+          - not_null
+          - relationships:
+              field: pk_sales_order_id
+              to: ref('stg_sales__sales_order_header')
+
+      - name: pk_sales_order_detail_id
+        description: "int. Um número incremental exclusivo por produto vendido."
+        tests:
+          - not_null
+          - unique
+
+      - name: carrier_tracking_number
+        description: "string. Número de rastreamento do transportador."
+
+      - name: order_quantity
+        description: "int. Quantidade encomendada por produto."
+        tests:
+          - not_null
+
+      - name: fk_product_id
+        description: "int. Identificador único do produto vendido ao cliente."
+        tests:
+          - not_null
+          - relationships:
+              field: pk_product_id
+              to: ref('stg_production__product')
+
+      - name: fk_special_offer_id
+        description: "int. Identificador único do Código promocional, tabela special_offer."
+        tests:
+          - not_null
+          - relationships:
+              field: pk_special_offer_id
+              to: ref('stg_sales__special_offer')
+
+      - name: unit_price
+        description: "float. Preço unitário do produto."
+        tests:
+          - not_null
+
+      - name: unit_price_discount
+        description: "float. Desconto aplicado ao preço unitário do produto."
+        tests:
+          - not_null
+
+      - name: row_guid
+        description: "string. Identificador global único do registro."
+        tests:
+          - not_null
+          - unique
+
+      - name: modified_date
+        description: "datetime. Data da última modificação do registro."
+        tests:
+          - not_null

@@ -1,0 +1,51 @@
+version: 2
+
+models:
+  - name: stg_production__product_review
+    description: "Staging table para o relacionamento entre produtos e avaliações, incluindo informações sobre o revisor e a avaliação."
+    columns:
+
+      - name: pk_product_review_id
+        description: "int. Identificador único da avaliação do produto."
+        tests:
+          - not_null
+          - unique
+
+      - name: fk_product_id
+        description: "int. Identificador único do produto avaliado."
+        tests:
+          - not_null
+          - relationships:
+              field: pk_product_id
+              to: ref('stg_production__product')
+          
+      - name: reviewer_name
+        description: "string. Nome do revisor."
+        tests:
+          - not_null
+
+      - name: review_date
+        description: "datetime. Data em que o review foi enviada."
+        tests:
+          - not_null
+
+      - name: email_address
+        description: "string. Endereço de e-mail do revisor."
+        tests:
+          - not_null
+
+      - name: rating
+        description: "int. Avaliação do produto em uma escala de 1 a 5."
+        tests:
+          - not_null
+          - accepted_values:
+              values: [1, 2, 3, 4, 5]
+              quote: false
+
+      - name: comments
+        description: "string. Comentários adicionais do revisador."
+
+      - name: modified_date
+        description: "datetime. Data da última modificação da avaliação do produto."
+        tests:
+          - not_null

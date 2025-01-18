@@ -1,0 +1,40 @@
+version: 2
+
+models:
+  - name: stg_person__business_entity_address
+    description: "Tabela de endereços"
+    columns:
+      - name: fk_business_entity_id
+        description: "ID do cliente/funcionario/pessoa. Relacionada com stg_person__business_entity.pk_business_entity_id"
+        tests:
+          - not_null
+          - relationships:
+              field: pk_business_entity_id
+              to: ref('stg_person__business_entity')
+
+      - name: fk_address_id
+        description: "ID do endereço"
+        tests:
+          - not_null
+          - relationships:
+              field: pk_address_id
+              to: ref('stg_person__address')
+
+      - name: fk_address_type_id
+        description: "ID do tipo de endereço"
+        tests:
+          - not_null
+          - relationships:
+              field: pk_address_type_id
+              to: ref('stg_person__address_type')
+
+      - name: row_guid
+        description: "GUID único do registro"
+        tests:
+          - not_null
+          - unique
+
+      - name: modified_date
+        description: "Data da última modificação"
+        tests:
+          - not_null

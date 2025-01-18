@@ -1,0 +1,48 @@
+version: 2
+
+models:
+  - name: stg_sales__currency_rate
+    description: "Staging table para informações das taxas de câmbio."
+    columns:
+      - name: pk_currency_rate_id
+        description: "int. Identificador único da taxa de câmbio."
+        tests:
+          - not_null
+          - unique
+
+      - name: currency_rate_date
+        description: "datetime. Data e hora em que a taxa de câmbio foi obtida."
+        tests:
+          - not_null
+
+      - name: fk_from_currency_code
+        description: "string. Código da moeda de origem (ex.: USD, EUR)."
+        tests:
+          - not_null
+          - relationships:
+              field: pk_currency_code
+              to: ref('stg_sales__currency')
+          
+
+      - name: fk_to_currency_code
+        description: "string. Código da moeda de destino (ex.: USD, EUR)."
+        tests:
+          - not_null
+          - relationships:
+              field: pk_currency_code
+              to: ref('stg_sales__currency')
+
+      - name: average_rate
+        description: "float. Taxa média de câmbio entre as moedas na data especificada."
+        tests:
+          - not_null
+
+      - name: end_of_day_rate
+        description: "float. Taxa de câmbio no final do dia entre as moedas na data especificada."
+        tests:
+          - not_null
+
+      - name: modified_date
+        description: "datetime. Data da última modificação do registro."
+        tests:
+          - not_null

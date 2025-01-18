@@ -1,0 +1,34 @@
+version: 2
+
+models:
+  - name: stg_sales__sales_person_quota_history
+    description: "Staging table para informações sobre as metas de vendas atribuídas aos vendedores."
+    columns:
+      - name: fk_salesperson_id
+        description: "int. Identificador único da entidade do vendedor."
+        tests:
+          - not_null
+          - relationships:
+                field: pk_salesperson_id
+                to: ref('stg_sales__sales_person')
+
+      - name: quota_date
+        description: "date. Data em que a meta de vendas foi atribuída."
+        tests:
+          - not_null
+
+      - name: sales_quota
+        description: "float. Meta de vendas atribuída ao vendedor."
+        tests:
+          - not_null
+
+      - name: row_guid
+        description: "string. Identificador global único do registro."
+        tests:
+          - not_null
+          - unique
+
+      - name: modified_date
+        description: "datetime. Data da última modificação do registro."
+        tests:
+          - not_null

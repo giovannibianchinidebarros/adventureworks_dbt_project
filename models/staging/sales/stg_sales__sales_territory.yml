@@ -1,0 +1,56 @@
+version: 2
+
+models:
+  - name: stg_sales__sales_territory
+    description: "Staging table para territórios de vendas, com informações sobre vendas, custos e modificações."
+    columns:
+      - name: pk_territory_id
+        description: "int. Identificador único do território."
+        tests:
+          - not_null
+          - unique
+
+      - name: territory_name
+        description: "string. Nome do território."
+        tests:
+          - not_null
+
+      - name: country_region_code
+        description: "string. Código do país ou região."
+        tests:
+          - not_null
+
+      - name: territory_group
+        description: "string. Nome do grupo ao qual o território pertence."
+        tests:
+          - not_null
+
+      - name: sales_ytd
+        description: "float. Vendas no ano até a data."
+        tests:
+          - not_null
+
+      - name: sales_last_year
+        description: "float. Vendas no ano passado."
+        tests:
+          - not_null
+
+      - name: cost_ytd
+        description: "float. Custo no ano até a data."
+        tests:
+          - not_null
+
+      - name: cost_last_year
+        description: "float. Custo no ano passado."
+        tests:
+          - not_null
+
+      - name: row_guid
+        description: "string. GUID único do território."
+        tests:
+          - not_null
+
+      - name: modified_date
+        description: "datetime. Data da última modificação."
+        tests:
+          - not_null

@@ -1,0 +1,24 @@
+version: 2
+
+models:
+
+  - name: stg_person__business_entity
+    description: "Tabela de entidades de negócios"
+    columns:
+
+      - name: pk_business_entity_id
+        description: "int. Primary key for all customers, vendors, and employees."
+        tests:
+          - not_null
+          - unique
+
+      - name: row_guid
+        description: "str. GUID único do registro"
+        tests:
+          - not_null
+          - unique
+          
+      - name: modified_date
+        description: "datetime. Data da última modificação"
+        tests:
+          - not_null

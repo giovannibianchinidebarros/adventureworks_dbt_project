@@ -1,0 +1,23 @@
+version: 2
+
+models:
+  - name: stg_person__country_region
+    description: "Staging para a tabela de paises/região."
+    columns:
+
+      - name: pk_country_region_code
+        description: "str. Código padrão ISO para países e regiões."
+        tests:
+          - not_null
+          - unique
+
+      - name: country_region_name
+        description: "str. Nome do país ou região."
+        tests:
+          - not_null
+          - unique
+
+      - name: modified_date
+        description: "datetime. Timestamp da ultima modificação."
+        tests:
+          - not_null
