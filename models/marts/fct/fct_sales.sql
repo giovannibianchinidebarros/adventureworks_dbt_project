@@ -7,9 +7,9 @@ sales AS (
     SELECT *
     FROM {{ ref("int_sales_reason") }}
 )
-, products AS (
+, quantity AS (
     SELECT *
-    FROM {{ ref("int_sales_products") }}
+    FROM {{ ref("int_sales_item_quantity") }}
 )
 , customer AS (
     SELECT * 
@@ -37,22 +37,31 @@ sales AS (
         , COALESCE(sales_reasons, 'Other') AS sales_reasons
         , COALESCE(sales_reason_type, 'Other') AS sales_reason_type
         , sales.order_date
-        , date.month_of_year
-        , date.month_name
-        , date.year_number
+        , date.year_number as order_date_year
+        , date.month_of_year as order_date_month
+        , date.month_name as order_date_month_name
         , sales.status
-        , sales.online_order_flag
-        , customer.pk_customer_id
-        , customer.fk_person_id
-        , customer.fk_store_id
-        , sales_person.pk_salesperson_id
-        , territory.pk_territory_id
+        , CASE 
+            WHEN status = 1 THEN 'In process'
+            WHEN status = 2 THEN 'Approved'
+            WHEN status = 3 THEN 'Backordered'
+            WHEN status = 4 THEN 'Rejected'
+            WHEN status = 5 THEN 'Shipped'
+            WHEN status = 6 THEN 'Cancelled'
+            ELSE 'Unknown'
+        END AS status_description
+        , sales.online_order_flag as is_online_order
+        , customer.customer_type
+        , customer.customer_name
+        , sales_person.pk_salesperson_id as salesperson_id
+        , sales_person.sales_person_name
+        , territory.pk_territory_id as territory_id
         , territory.territory_name
         , territory.country_region_code
         , territory.country_region_name
         , territory.territory_group
-        , products.num_items as number_of_itens
-        , products.total_cost
+        , quantity.num_items as number_of_itens
+        , quantity.total_cost
         , sales.subtotal
         , sales.tax_amount
         , sales.freight
@@ -61,8 +70,8 @@ sales AS (
     FROM sales
     LEFT JOIN reason 
         ON sales.pk_sales_order_id = reason.sales_order_id
-    LEFT JOIN products 
-        ON sales.pk_sales_order_id = products.sales_order_id
+    LEFT JOIN quantity 
+        ON sales.pk_sales_order_id = quantity.sales_order_id
     LEFT JOIN customer 
         ON sales.fk_customer_id = customer.pk_customer_id
     LEFT JOIN sales_person 
