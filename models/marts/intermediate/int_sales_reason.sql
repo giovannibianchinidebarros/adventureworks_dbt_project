@@ -16,7 +16,7 @@ sales_reason AS (
     LEFT JOIN reason 
         ON sales_reason.fk_sales_reason_id = reason.pk_sales_reason_id
     GROUP BY
-    sales_reason.fk_sales_order_id
+        sales_reason.fk_sales_order_id
 )
 SELECT * FROM final
 order by sales_order_id
