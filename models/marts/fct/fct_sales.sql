@@ -7,6 +7,10 @@ sales AS (
     SELECT *
     FROM {{ ref("int_sales_reason") }}
 )
+, products AS (
+    SELECT *
+    FROM {{ ref("int_sales_products") }}
+)
 , customer AS (
     SELECT * 
     FROM {{ ref("dim_customer") }}
@@ -33,8 +37,11 @@ sales AS (
         , COALESCE(sales_reasons, 'Other') AS sales_reasons
         , COALESCE(sales_reason_type, 'Other') AS sales_reason_type
         , sales.order_date
+        , date.month_of_year
         , date.month_name
         , date.year_number
+        , sales.status
+        , sales.online_order_flag
         , customer.pk_customer_id
         , customer.fk_person_id
         , customer.fk_store_id
@@ -44,10 +51,18 @@ sales AS (
         , territory.country_region_code
         , territory.country_region_name
         , territory.territory_group
+        , products.num_items as number_of_itens
+        , products.total_cost
+        , sales.subtotal
+        , sales.tax_amount
+        , sales.freight
+        , sales.total_due
         , COALESCE(credit_card.card_type, 'Other') AS credit_card_type
     FROM sales
     LEFT JOIN reason 
         ON sales.pk_sales_order_id = reason.sales_order_id
+    LEFT JOIN products 
+        ON sales.pk_sales_order_id = products.sales_order_id
     LEFT JOIN customer 
         ON sales.fk_customer_id = customer.pk_customer_id
     LEFT JOIN sales_person 
