@@ -16,3 +16,4 @@ SELECT
     JSON_VALUE(json_data, '$.rowguid') AS row_guid,
     SAFE_CAST(JSON_VALUE(json_data, '$.modifieddate') AS DATETIME) AS modified_date
 FROM base
+order by fk_sales_order_id

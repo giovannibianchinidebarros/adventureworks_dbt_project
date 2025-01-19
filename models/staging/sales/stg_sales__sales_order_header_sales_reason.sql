@@ -9,3 +9,4 @@ SELECT
     SAFE_CAST(JSON_VALUE(json_data, '$.salesreasonid') AS INT64) AS fk_sales_reason_id,
     SAFE_CAST(JSON_VALUE(json_data, '$.modifieddate') AS DATETIME) AS modified_date
 FROM base
+order by fk_sales_order_id
