@@ -24,19 +24,20 @@ item AS (
         item.fk_sales_order_id as sales_order_id
         , item.pk_sales_order_detail_id as sales_order_detail_id
         , item.order_quantity
-        , item.fk_product_id
+        , item.fk_product_id as product_id
         , item.unit_price
         , sales.order_date
         , date.year_number as order_date_year
         , date.month_of_year as order_date_month
         , date.month_name as order_date_month_name
+        , date.month_start_date
+        , date.week_start_date
         , sales.fk_territory_id
-        , territory.pk_territory_id as territory_id
+        , territory.territory_id as territory_id
         , territory.territory_name
         , territory.country_region_code
         , territory.country_region_name
         , territory.territory_group
-        , product.product_id
         , product.product_name
         , product.standard_cost
         , product.list_price
@@ -50,7 +51,7 @@ item AS (
     LEFT JOIN product 
         ON item.fk_product_id = product.product_id
     LEFT JOIN territory 
-        ON sales.fk_territory_id = territory.pk_territory_id
+        ON sales.fk_territory_id = territory.territory_id
     LEFT JOIN date 
         ON sales.order_date = date.date_day
 )

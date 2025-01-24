@@ -9,9 +9,9 @@ sales_person AS (
 )
 , final AS (
     SELECT
-        sales_person.pk_salesperson_id
+        sales_person.pk_salesperson_id as salesperson_id
         , person.person_name as sales_person_name
-        , sales_person.fk_territory_id
+        , sales_person.fk_territory_id as territory_id
         , sales_person.sales_quota
         , sales_person.bonus
         , sales_person.commission_pct

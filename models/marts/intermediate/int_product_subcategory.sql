@@ -9,7 +9,7 @@ subcategory AS (
 )
 , final AS (
     SELECT
-        subcategory.pk_product_subcategory_id
+        subcategory.pk_product_subcategory_id as product_subcategory_id
         , subcategory.subcategory_name
         , category.category_name
     FROM subcategory

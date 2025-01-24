@@ -47,12 +47,12 @@ product AS (
         , discontinued_date
     FROM product
     LEFT JOIN subcategory 
-        ON product.fk_product_subcategory_id = subcategory.pk_product_subcategory_id
+        ON product.fk_product_subcategory_id = subcategory.product_subcategory_id
     LEFT JOIN size_unit 
         ON product.fk_size_unit_measure_code = size_unit.pk_unit_measure_code
     LEFT JOIN weight_unit 
         ON product.fk_weight_unit_measure_code = weight_unit.pk_unit_measure_code
     LEFT JOIN model 
-        ON product.product_model_id = model.pk_product_model_id
+        ON product.product_model_id = model.product_model_id
 )
 SELECT * FROM final
