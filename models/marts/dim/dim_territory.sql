@@ -9,7 +9,7 @@ territory AS (
 )
 , final AS (
     SELECT
-        territory.pk_territory_id
+        territory.pk_territory_id as territory_id
         , territory.territory_name
         , territory.country_region_code
         , country.country_region_name

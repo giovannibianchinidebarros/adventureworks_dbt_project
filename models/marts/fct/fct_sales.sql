@@ -53,9 +53,9 @@ sales AS (
         , sales.online_order_flag as is_online_order
         , customer.customer_type
         , customer.customer_name
-        , sales_person.pk_salesperson_id as salesperson_id
+        , sales_person.salesperson_id as salesperson_id
         , sales_person.sales_person_name
-        , territory.pk_territory_id as territory_id
+        , territory.territory_id as territory_id
         , territory.territory_name
         , territory.country_region_code
         , territory.country_region_name
@@ -73,11 +73,11 @@ sales AS (
     LEFT JOIN quantity 
         ON sales.pk_sales_order_id = quantity.sales_order_id
     LEFT JOIN customer 
-        ON sales.fk_customer_id = customer.pk_customer_id
+        ON sales.fk_customer_id = customer.customer_id
     LEFT JOIN sales_person 
-        ON sales.fk_salesperson_id = sales_person.pk_salesperson_id
+        ON sales.fk_salesperson_id = sales_person.salesperson_id
     LEFT JOIN territory 
-        ON sales.fk_territory_id = territory.pk_territory_id
+        ON sales.fk_territory_id = territory.territory_id
     LEFT JOIN credit_card 
         ON sales.fk_credit_card_id = credit_card.pk_credit_card_id
     LEFT JOIN date 

@@ -13,12 +13,12 @@ customer AS (
 )
 , final AS (
     SELECT
-        customer.pk_customer_id
-        , customer.fk_person_id
+        customer.pk_customer_id as customer_id
+        , customer.fk_person_id as person_id
         , person.person_name
-        , customer.fk_store_id
+        , customer.fk_store_id as store_id
         , store.store_name
-        , customer.fk_territory_id
+        , customer.fk_territory_id as territory_id
         -- Nova coluna customer_type com prioridade para store
         , CASE 
             WHEN store.store_name IS NOT NULL THEN 'store'

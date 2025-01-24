@@ -17,7 +17,7 @@ model_description_culture AS (
 )
 , final AS (
     SELECT
-        model_description_culture.fk_product_model_id as pk_product_model_id
+        model_description_culture.fk_product_model_id as product_model_id
         , model.product_model_name
         , description.description
         , culture.pk_culture_id as culture_id
