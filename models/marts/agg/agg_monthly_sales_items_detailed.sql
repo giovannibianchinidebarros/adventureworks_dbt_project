@@ -1,17 +1,20 @@
-WITH aggregated_weekly AS (
+WITH aggregated_monthly AS (
     SELECT 
-        week_start_date
+        month_start_date
         , territory_name
         , category
+        , subcategory
         , SUM(order_quantity) AS total_order_quantity
     FROM {{ ref("fct_sales_items") }}
     GROUP BY 
-        week_start_date
+        month_start_date
         , territory_name
         , category
+        , subcategory
     ORDER BY 
-        week_start_date
+        month_start_date
         , territory_name
         , category
+        , subcategory
 )
-SELECT * FROM aggregated_weekly
+SELECT * FROM aggregated_monthly
