@@ -51,6 +51,7 @@ sales AS (
             ELSE 'Unknown'
         END AS status_description
         , sales.online_order_flag as is_online_order
+        , customer.customer_id
         , customer.customer_type
         , customer.customer_name
         , sales_person.salesperson_id as salesperson_id
